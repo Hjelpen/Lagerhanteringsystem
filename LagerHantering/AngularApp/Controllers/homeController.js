@@ -14,7 +14,7 @@
 
                 loginService.login($scope.loginData).then(function (response) {
 
-                    $location.path('/mainpage');
+                    $location.path('/component');
 
                 },
                function (err) {

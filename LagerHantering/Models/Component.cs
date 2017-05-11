@@ -10,7 +10,7 @@ namespace LagerHantering.Models
     {
         [Key]
         public int Id { get; set; }
-        public string ComponentName { get; set; }
+        public string Name { get; set; }
         public string ArticleNumber { get; set; }
         public string OrderTime { get; set; }
         public int Amount { get; set; }

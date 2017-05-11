@@ -82,7 +82,7 @@ namespace LagerHantering.API
             db.Components.Add(component);
             db.SaveChanges();
 
-            return Ok(component);
+            return Ok();
         }
 
         // DELETE: api/Components/5
@@ -105,7 +105,8 @@ namespace LagerHantering.API
         {
             if (disposing)
             {
-                db.Dispose();
+                DbContextProvider.Instance.DisposeContext();
+                db = null;
             }
             base.Dispose(disposing);
         }

@@ -10,6 +10,6 @@ namespace LagerHantering.Models
         public int Id { get; set; }
         public string Name { get; set; }
         public string Note { get; set; }
-
+        public List<Component> Components { get; set; }
     }
 }

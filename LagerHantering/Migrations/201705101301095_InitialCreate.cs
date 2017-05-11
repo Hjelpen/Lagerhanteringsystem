@@ -22,7 +22,7 @@ namespace LagerHantering.Migrations
                 c => new
                     {
                         Id = c.Int(nullable: false, identity: true),
-                        ComponentName = c.String(),
+                        Name = c.String(),
                         ArticleNumber = c.String(),
                         OrderTime = c.String(),
                         Amount = c.Int(nullable: false),

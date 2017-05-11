@@ -12,7 +12,7 @@ namespace LagerHantering.Migrations
     {
         public Configuration()
         {
-            AutomaticMigrationsEnabled = false;
+            AutomaticMigrationsEnabled = true;
             ContextKey = "LagerHantering.DataAcess.DbContext";
         }
 

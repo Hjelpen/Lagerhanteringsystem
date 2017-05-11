@@ -18,11 +18,12 @@
     <script src="AngularApp/appRouting.js"></script>
     <script src="AngularApp/Controllers/homeController.js"></script>
     <script src="AngularApp/Controllers/indexController.js"></script>
-    <script src="AngularApp/Controllers/mainpageController.js"></script>
+    <script src="AngularApp/Controllers/componentController.js"></script>
     <script src="AngularApp/Controllers/registerController.js"></script>
     <script src="AngularApp/Services/authInterceptorService.js"></script>
     <script src="AngularApp/Services/loginService.js"></script>
     <script src="AngularApp/Services/registerService.js"></script>
+    <script src="AngularApp/Services/componentService.js"></script>
 
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 </head>
@@ -42,7 +43,7 @@
                 </div>
                 <div class="nav-collapse" data-toggle="collapse" data-target=".nav-collapse.in" id="bs-example-navbar-collapse-2">
                     <ul class="nav navbar-nav navbar-right">
-                        <li data-ng-hide="!authentication.isAuth"><a href="#/mainpage">Komponenter</a></li>
+                        <li data-ng-hide="!authentication.isAuth"><a href="#/component">Komponenter</a></li>
                         <li data-ng-hide="!authentication.isAuth"><a href="/#/register">Skapa användare</a></li>
                         <li data-ng-hide="!authentication.isAuth"><a href="" data-ng-click="logOut()">Logga ut</a></li>
                     </ul>

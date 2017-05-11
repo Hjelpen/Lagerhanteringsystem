@@ -18,9 +18,9 @@
                 templateUrl: "/AngularApp/Views/register.html"
             });
 
-            $routeProvider.when("/mainpage", {
-                controller: "mainpageController",
-                templateUrl: "/AngularApp/Views/mainpage.html"
+            $routeProvider.when("/component", {
+                controller: "componentController",
+                templateUrl: "/AngularApp/Views/component.html"
             });
 
             $routeProvider.otherwise({ redirectTo: "/home" });

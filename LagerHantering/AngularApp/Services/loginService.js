@@ -17,7 +17,7 @@
 
               var deferred = $q.defer();
 
-              $http.post('https://localhost:44300/' + 'token', data, { headers: { 'Content-Type': 'application/x-www-form-urlencoded' } }).then(function (response) {
+              $http.post('http://localhost:45559/' + 'token', data, { headers: { 'Content-Type': 'application/x-www-form-urlencoded' } }).then(function (response) {
 
                   localStorageService.set('authorizationData', { token: response.data.access_token });
 

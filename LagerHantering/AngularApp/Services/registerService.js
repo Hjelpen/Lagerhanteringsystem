@@ -7,7 +7,7 @@
 
            var _saveRegistration = function (registration) {
 
-               return $http.post('https://localhost:44300/api/account/register', registration)
+               return $http.post('http://localhost:45559/api/account/register', registration)
                    .then(function (response) {
                        return response;
                    });

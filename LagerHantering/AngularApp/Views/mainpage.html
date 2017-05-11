@@ -7,12 +7,14 @@
 <body>
     <form class="form-horizontal" name="componentForm">
         <div class=".col-xs-6 .col-md-4">
-            <input type="text" class="form-control" placeholder="Komponent namn" data-ng-model="component.Name" />
-            <input type="text" class="form-control" placeholder="Artikelnummer" data-ng-model="component.ArticleNumber" />
-            <input type="text" class="form-control" placeholder="Beställningstid" data-ng-model="component.OrderTime" />
-            <input type="text" class="form-control" placeholder="Antal" data-ng-model="component.Amount" />
-            <input type="text" class="form-control" placeholder="Pris" data-ng-model="component.Price" />                 
-            <button class="btn btn-lg btn-info btn-block" type="submit" data-ng-click="saveComponent()">Spara</button>       
+            <div id="controllerDiv" ng-controller="mainpageController">
+                <input type="text" class="form-control" placeholder="Komponent namn" data-ng-model="component.Name" />
+                <input type="text" class="form-control" placeholder="Artikelnummer" data-ng-model="component.ArticleNumber" />
+                <input type="text" class="form-control" placeholder="Beställningstid" data-ng-model="component.OrderTime" />
+                <input type="text" class="form-control" placeholder="Antal" data-ng-model="component.Amount" />
+                <input type="text" class="form-control" placeholder="Pris" data-ng-model="component.Price" />
+                <button class="btn btn-lg btn-info btn-block" type="submit" data-ng-click="saveComponent()">Spara</button>
+            </div>
         </div>
         </form>
 </body>

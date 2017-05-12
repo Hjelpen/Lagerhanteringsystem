@@ -5,14 +5,15 @@
 
            var componentServiceFactory = {};
 
+           //Skickar component objekten som kommer in från componentController vidare till ComponentsController API.
            var _addComponent = function (component) {
-
                return $http.post('http://localhost:45559/api/Components', component)
                    .then(function (response) {
                        return response;
                    });
            };
 
+           //Kör en get till ComponentsController API för att hämta alla komponenter som finns i databasen.
            var _getComponent = function () {
                return $http.get('http://localhost:45559/api/Components')
                    .then(function (response) {

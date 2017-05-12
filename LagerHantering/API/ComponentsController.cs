@@ -87,9 +87,9 @@ namespace LagerHantering.API
 
         // DELETE: api/Components/5
         [ResponseType(typeof(Component))]
-        public IHttpActionResult DeleteComponent(int id)
+        public IHttpActionResult DeleteComponent(int Id)
         {
-            Component component = db.Components.Find(id);
+            Component component = db.Components.Find(Id);
             if (component == null)
             {
                 return NotFound();

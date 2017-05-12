@@ -27,11 +27,14 @@
                     </thead>
                     <tbody>
                         <tr ng-repeat="component in components ">
+                            <td hidden="hidden">{{component.id}}</td>
                             <td>{{component.articleNumber}}</td>
                             <td>{{component.name}}</td>
                             <td>{{component.orderTime}}</td>
                             <td>{{component.amount}}</td>
-                            <td>{{component.price}}</td>
+                            <td>{{component.price}}
+                                <button class="glyphicon glyphicon-trash" type="submit" ng-click="deleteComponent($index)"></button>
+                            </td>                                       
                         </tr>
                     </tbody>
                 </table>

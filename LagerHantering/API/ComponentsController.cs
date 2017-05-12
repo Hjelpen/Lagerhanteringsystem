@@ -7,6 +7,7 @@ using System.Web.Http.Description;
 using LagerHantering.Models;
 using LagerHantering.Providers;
 using LagerHantering.Repositories;
+using Microsoft.AspNet.Identity;
 
 namespace LagerHantering.API
 {
@@ -74,6 +75,7 @@ namespace LagerHantering.API
         [HttpPost]
         public IHttpActionResult PostComponent(Component component)
         {
+
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);

@@ -193,14 +193,17 @@
   <ItemGroup>
     <Content Include="AngularApp\app.module.js" />
     <Content Include="AngularApp\appRouting.js" />
+    <Content Include="AngularApp\Controllers\articleControllerjs.js" />
     <Content Include="AngularApp\Controllers\homeController.js" />
     <Content Include="AngularApp\Controllers\indexController.js" />
     <Content Include="AngularApp\Controllers\componentController.js" />
     <Content Include="AngularApp\Controllers\registerController.js" />
+    <Content Include="AngularApp\Services\articleService.js" />
     <Content Include="AngularApp\Services\authInterceptorService.js" />
     <Content Include="AngularApp\Services\componentService.js" />
     <Content Include="AngularApp\Services\loginService.js" />
     <Content Include="AngularApp\Services\registerService.js" />
+    <Content Include="AngularApp\Views\article.html" />
     <Content Include="AngularApp\Views\home.html" />
     <Content Include="AngularApp\Views\component.html" />
     <Content Include="AngularApp\Views\register.html" />

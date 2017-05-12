@@ -37,12 +37,12 @@
                  });
             };
 
-            //Tar bort komponent vid knappklick från aktuella Idn för den komponent man trycker vid.
+            //Tar bort komponent, skickar objektets id till controllern api som tar bort den fårn databasen.
             $scope.deleteComponent = function (index) {
                 if (confirm("Vill du ta bort denna komponenten?")) {
                     $http({
                         method: 'DELETE',
-                        url: 'http://localhost:45559/api/Components/' + $scope.components[index].Id,
+                        url: 'http://localhost:45559/api/Components/' + $scope.components[index].id,
                     }).then(function successCallback(response) {
                         $scope.components.splice(index, 1);
                     }, function errorCallback(response) {

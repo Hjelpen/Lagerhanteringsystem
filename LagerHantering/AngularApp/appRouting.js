@@ -23,6 +23,11 @@
                 templateUrl: "/AngularApp/Views/component.html"
             });
 
+            $routeProvider.when("/article", {
+                controller: "articleController",
+                templateUrl: "/AngularApp/Views/article.html"
+            });
+
             $routeProvider.otherwise({ redirectTo: "/home" });
 
         });

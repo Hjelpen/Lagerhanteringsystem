@@ -20,10 +20,19 @@
                        return response;
                    });
            }
-
+           var _UpdateQuanitty = function (Quantity) {
+               return $http.post('http://localhost:45559/api/Components', Quantity)
+                   .then(function (response) {
+                       return response;
+                   });
+           };
+           componentServiceFactory.UpdateQuantity = _UpdateQuanitty;
            componentServiceFactory.getComponent = _getComponent;
            componentServiceFactory.addComponent = _addComponent;
            return componentServiceFactory;
+
+
+
 
        }]);
 })();

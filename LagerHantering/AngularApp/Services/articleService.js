@@ -6,8 +6,8 @@
            var articleServiceFactory = {};
 
            //skickar artikel objektet till webAPI som sparar ner i databasen.
-           var _addArticle = function (component) {
-               return $http.post('')
+           var _addArticle = function (article) {
+               return $http.post('http://localhost:45559/api/Articles', article)
                    .then(function (response) {
                        return response;
                    });
@@ -15,7 +15,7 @@
 
            //hämtar alla artiklar från databasen med webapi.
            var _getArticle = function () {
-               return $http.get('')
+               return $http.get('http://localhost:45559/api/Articles')
                    .then(function (response) {
                        return response;
                    });

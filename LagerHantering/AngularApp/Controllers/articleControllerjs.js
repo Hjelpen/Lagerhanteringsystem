@@ -10,8 +10,8 @@
 
             //sparar artikelns namn och listan med valda komponenter
             $scope.article = {
-                name: "",
-                components: [$scope.selectedComponents]
+                Name: "",
+                Components: $scope.selectedComponents
             };
 
             //Kallar på funktionen getComponent från componentService.js för att hämta alla komponenter,
@@ -44,7 +44,6 @@
                 articleService.addArticle($scope.article).then(function (response) {
                     console.log($scope.article)
                     $scope.article = null;
-                    $scope.selectedComponents = null;
                 },
                 function (response) {
                     response

@@ -13,6 +13,8 @@ namespace LagerHantering
         {
             // Web API configuration and services
 
+            config.EnableCors();
+
             var jsonFormatter = config.Formatters.OfType<JsonMediaTypeFormatter>().First();
             jsonFormatter.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
 

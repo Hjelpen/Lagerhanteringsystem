@@ -6,59 +6,55 @@ using System.Web.Http;
 using System.Web.Http.Description;
 using LagerHantering.Models;
 using LagerHantering.Providers;
-using LagerHantering.Repositories;
 
 namespace LagerHantering.API
 {
-    public class ComponentsController : ApiController
+    public class ArticlesController : ApiController
     {
         private DataAcess.DbContext db = DbContextProvider.Instance.DbContext;
-        private UserRepository _repo = new UserRepository();
 
-        // GET: api/Components
-        public IQueryable<Component> GetComponents()
+        // GET: api/Articles
+        public IQueryable<Article> GetArticles()
         {
-            return db.Components;
+            return db.Articles;
         }
 
-        // GET: api/Components/5
-        [ResponseType(typeof(Component))]
-        public IHttpActionResult GetComponent(int id)
+        // GET: api/Articles/5
+        [ResponseType(typeof(Article))]
+        public IHttpActionResult GetArticle(int id)
         {
-            Component component = db.Components.Find(id);
-            if (component == null)
+            Article article = db.Articles.Find(id);
+            if (article == null)
             {
                 return NotFound();
             }
 
-            return Ok(component);
+            return Ok(article);
         }
 
-        // PUT: api/Components/5
+        // PUT: api/Articles/5
         [ResponseType(typeof(void))]
-        public IHttpActionResult PutComponent(int id, Component component)
+        public IHttpActionResult PutArticle(int id, Article article)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            if (id != component.ComponentId)
+            if (id != article.ArticleId)
             {
                 return BadRequest();
             }
 
-            
-            db.Entry(component).State = EntityState.Modified;
+            db.Entry(article).State = EntityState.Modified;
 
             try
             {
-                
                 db.SaveChanges();
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!ComponentExists(id))
+                if (!ArticleExists(id))
                 {
                     return NotFound();
                 }
@@ -71,34 +67,36 @@ namespace LagerHantering.API
             return StatusCode(HttpStatusCode.NoContent);
         }
 
-        // POST: api/Components
-        [ResponseType(typeof(Component))]
-        public IHttpActionResult PostComponent(Component component)
+        // POST: api/Articles
+        [ResponseType(typeof(Article))]
+        public IHttpActionResult PostArticle(Article article)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            db.Components.Add(component);
+            
+            db.Articles.Add(article);
             db.SaveChanges();
 
-            return CreatedAtRoute("DefaultApi", new { id = component.ComponentId }, component);
+            return CreatedAtRoute("DefaultApi", new { id = article.ArticleId }, article);
         }
 
-        // DELETE: api/Components/5
-        [ResponseType(typeof(Component))]
-        [HttpDelete]
+        // DELETE: api/Articles/5
+        [ResponseType(typeof(Article))]
+        public IHttpActionResult DeleteArticle(int id)
         {
-            if (component == null)
+            Article article = db.Articles.Find(id);
+            if (article == null)
             {
                 return NotFound();
             }
 
-            db.Components.Remove(component);
+            db.Articles.Remove(article);
             db.SaveChanges();
 
-            return Ok(component);
+            return Ok(article);
         }
 
         protected override void Dispose(bool disposing)
@@ -111,9 +109,9 @@ namespace LagerHantering.API
             base.Dispose(disposing);
         }
 
-        private bool ComponentExists(int id)
+        private bool ArticleExists(int id)
         {
-            return db.Components.Count(e => e.ComponentId == id) > 0;
+            return db.Articles.Count(e => e.ArticleId == id) > 0;
         }
     }
 }

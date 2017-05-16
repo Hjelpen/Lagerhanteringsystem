@@ -991,19 +991,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="API\AccountController.cs" />
+    <Compile Include="API\ArticlesController.cs" />
     <Compile Include="API\ComponentsController.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="DataAcess\DbContext.cs" />
-    <Compile Include="Migrations\201705101301095_InitialCreate.cs" />
-    <Compile Include="Migrations\201705101301095_InitialCreate.Designer.cs">
-      <DependentUpon>201705101301095_InitialCreate.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201705101341562_database-update.cs" />
-    <Compile Include="Migrations\201705101341562_database-update.Designer.cs">
-      <DependentUpon>201705101341562_database-update.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ApplicationUser.cs" />
     <Compile Include="Models\Article.cs" />
@@ -1042,14 +1035,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Controllers\" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\201705101301095_InitialCreate.resx">
-      <DependentUpon>201705101301095_InitialCreate.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201705101341562_database-update.resx">
-      <DependentUpon>201705101341562_database-update.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

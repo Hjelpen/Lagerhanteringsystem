@@ -15,7 +15,7 @@ namespace LagerHantering.Models
             this.Components = new HashSet<Component>();
         }
 
-        public int ArticleId { get; set; }
+        public int Id { get; set; }
         public string Name { get; set; }
 
         

@@ -6,6 +6,7 @@ using System.Web.Http;
 using System.Web.Http.Description;
 using LagerHantering.Models;
 using LagerHantering.Providers;
+using System.Collections.Generic;
 
 namespace LagerHantering.API
 {
@@ -41,7 +42,7 @@ namespace LagerHantering.API
                 return BadRequest(ModelState);
             }
 
-            if (id != article.ArticleId)
+            if (id != article.Id)
             {
                 return BadRequest();
             }
@@ -76,11 +77,19 @@ namespace LagerHantering.API
                 return BadRequest(ModelState);
             }
 
-            
+            var components = new List<Component>();
+            foreach (var component in article.Components)
+            {
+                components.Add(db.Components.Find(component.Id));
+            }
+
+            article.Components = null;
+            article.Components = components;
+
             db.Articles.Add(article);
             db.SaveChanges();
 
-            return CreatedAtRoute("DefaultApi", new { id = article.ArticleId }, article);
+            return CreatedAtRoute("DefaultApi", new { id = article.Id }, article);
         }
 
         // DELETE: api/Articles/5
@@ -111,7 +120,7 @@ namespace LagerHantering.API
 
         private bool ArticleExists(int id)
         {
-            return db.Articles.Count(e => e.ArticleId == id) > 0;
+            return db.Articles.Count(e => e.Id == id) > 0;
         }
     }
 }

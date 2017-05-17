@@ -10,7 +10,7 @@
             <div id="controllerDiv" ng-controller="componentController" ng-init="getAllComponents()">
 
                 <hr />
-             
+
                 <table>
                     <thead>
                         <tr>
@@ -23,17 +23,12 @@
                     <tbody>
 
                         <tr ng-repeat="component in components ">
-
-                            
                             <td hidden="hidden">{{component.id}}</td>
                             <td>{{component.articleNumber}}</td>
                             <td>{{component.name}}</td>
-
-                            <td>{{component.amount}}</td>
+                            <td>{{component.amount}}<input type="number" data-ng-model="updateComponent.quantity" /></td>
                             <td>
-                                <input type="number" data-ng-model="comp.quantity" />
-                                
-                                <button data-ng-click="comp.isEditMode = false">Spara</button>
+                                <button ng-click="UpdateQuantity($index)">Spara</button>
                             </td>
                         </tr>
                     </tbody>

@@ -1,0 +1,35 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+	<meta charset="utf-8" />
+</head>
+<body>
+    <div ng-controller="editComponentController" ng-init="editComponent()">
+        <table>
+            <thead>
+                <tr>
+                    <th>Artikelnummer</th>
+                    <th>Namn</th>
+                    <th>Ledtid</th>
+                    <th>Antal</th>
+                    <th>Pris</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td hidden="hidden">{{component.id}}</td>
+                    <td>{{component.articleNumber}}</td>
+                    <td>{{component.name}}</td>
+                    <td>{{component.orderTime}}</td>
+                    <td>{{component.amount}}</td>
+                    <td>
+                        {{component.price}}
+                        <button class="glyphicon glyphicon-trash" type="submit" ng-click="deleteComponent($index)"></button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

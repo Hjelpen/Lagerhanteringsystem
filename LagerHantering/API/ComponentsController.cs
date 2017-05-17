@@ -23,9 +23,10 @@ namespace LagerHantering.API
 
         // GET: api/Components/5
         [ResponseType(typeof(Component))]
+        [HttpGet]
         public IHttpActionResult GetComponent(int id)
         {
-            Component component = db.Components.Find(id);
+            Component component = db.Components.Where(x => x.Id == id).FirstOrDefault();
             if (component == null)
             {
                 return NotFound();
@@ -36,7 +37,8 @@ namespace LagerHantering.API
 
         // PUT: api/Components/5
         [ResponseType(typeof(void))]
-        public IHttpActionResult PutComponent(int id, Component component)
+        [HttpPut]
+        public IHttpActionResult Component(int id, Component component)
         {
             if (!ModelState.IsValid)
             {
@@ -68,6 +70,9 @@ namespace LagerHantering.API
 
             return StatusCode(HttpStatusCode.NoContent);
         }
+
+       
+
 
         // POST: api/Components
         [ResponseType(typeof(Component))]

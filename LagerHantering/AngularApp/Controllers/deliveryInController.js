@@ -23,8 +23,8 @@
             };
 
             $scope.UpdateQuantity = function () {
-                componentService.UpdateQuantity($scope.Quantity).then(function (response) {
-                 
+                componentService.UpdateQuantity($scope.updateComponent).then(function (response) {
+
                 },
                    function (response) {
                        (response)
@@ -34,7 +34,7 @@
 
 
 
-            
+
 
 
         }]);

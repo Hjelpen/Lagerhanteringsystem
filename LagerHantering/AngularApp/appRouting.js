@@ -23,9 +23,9 @@
                 templateUrl: "/AngularApp/Views/component.html"
             });
 
-            $routeProvider.when("/deliveryIn", {
-                controller: "deliveryInController",
-                templateUrl: "/AngularApp/Views/deliveryIn.html"
+            $routeProvider.when("/componentEdit/:id", {
+                controller: "editComponentController",
+                templateUrl: "/AngularApp/Views/editComponent.html"
             });
 
             $routeProvider.otherwise({ redirectTo: "/home" });

@@ -29,7 +29,7 @@
             //Kallar på funktionen getComponent från componentService för att hämta alla komponenter,
             //sen fyller scope.components arrayn med datan den får tillbaka i svaret.
             $scope.getAllComponents = function () {
-                componentService.getComponent().then(function (response) {
+                componentService.getComponents().then(function (response) {
                     $scope.components = response.data
                 },
                  function (response) {
@@ -50,6 +50,22 @@
                     });
                 }
             };
+
+            //$scope.editComponent = function (id) {
+            //    debugger;
+               
+            //        $location.path('editComponent/' + id);
+             
+            //        //$http({
+            //        //    method: 'get',
+            //        //    url: 'http://localhost:45559/api/components/getComponent/?id=' + index,
+            //        //}).then(function successCallback(response) {
+            //        //    $scope.components.splice(index, 1);
+            //        //}, function errorCallback(response) {
+            //        //    alert("Error : " + response.data.ExceptionMessage);
+            //        //});
+                
+            //};
                
         }]);
 })();

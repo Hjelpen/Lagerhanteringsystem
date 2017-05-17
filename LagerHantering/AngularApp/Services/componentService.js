@@ -14,21 +14,29 @@
            };
 
            //Kör en get till ComponentsController API för att hämta alla komponenter som finns i databasen.
-           var _getComponent = function () {
+           var _getComponents = function () {
                return $http.get('http://localhost:45559/api/Components')
                    .then(function (response) {
                        return response;
                    });
-           }
-           var _UpdateQuanitty = function (Quantity) {
-               return $http.post('http://localhost:45559/api/Components', Quantity)
+           };
+           var _UpdateQuantity = function (Quantity) {
+               return $http.put('http://localhost:45559/api/Components', Quantity)
                    .then(function (response) {
                        return response;
                    });
            };
-           componentServiceFactory.UpdateQuantity = _UpdateQuanitty;
-           componentServiceFactory.getComponent = _getComponent;
+
+           var _getComponent = function (id) {
+               return $http.get('http://localhost:45559/api/Components/getComponent/?id=' + id)
+                   .then(function (response) {
+                       return response;
+                   });
+           }
+           componentServiceFactory.UpdateQuantity = _UpdateQuantity;
+           componentServiceFactory.getComponents = _getComponents;
            componentServiceFactory.addComponent = _addComponent;
+           componentServiceFactory.getComponent = _getComponent;
            return componentServiceFactory;
 
 

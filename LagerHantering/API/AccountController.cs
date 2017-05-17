@@ -16,7 +16,7 @@ namespace LagerHantering.API
             _repo = new UserRepository();
         }
 
-        [Authorize(Roles = "Admin")]
+       // [Authorize(Roles = "Admin")]
         [Route("Register")]
         public async Task<IHttpActionResult> Register(User userModel)
         {

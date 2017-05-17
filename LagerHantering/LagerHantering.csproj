@@ -193,16 +193,19 @@
   <ItemGroup>
     <Content Include="AngularApp\app.module.js" />
     <Content Include="AngularApp\appRouting.js" />
+    <Content Include="AngularApp\Controllers\articleControllerjs.js" />
     <Content Include="AngularApp\Controllers\deliveryInController.js" />
     <Content Include="AngularApp\Controllers\editComponentController.js" />
     <Content Include="AngularApp\Controllers\homeController.js" />
     <Content Include="AngularApp\Controllers\indexController.js" />
     <Content Include="AngularApp\Controllers\componentController.js" />
     <Content Include="AngularApp\Controllers\registerController.js" />
+    <Content Include="AngularApp\Services\articleService.js" />
     <Content Include="AngularApp\Services\authInterceptorService.js" />
     <Content Include="AngularApp\Services\componentService.js" />
     <Content Include="AngularApp\Services\loginService.js" />
     <Content Include="AngularApp\Services\registerService.js" />
+    <Content Include="AngularApp\Views\article.html" />
     <Content Include="AngularApp\Views\deliveryIn.html" />
     <Content Include="AngularApp\Views\editComponent.html" />
     <Content Include="AngularApp\Views\home.html" />
@@ -992,19 +995,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="API\AccountController.cs" />
+    <Compile Include="API\ArticlesController.cs" />
     <Compile Include="API\ComponentsController.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="DataAcess\DbContext.cs" />
-    <Compile Include="Migrations\201705101301095_InitialCreate.cs" />
-    <Compile Include="Migrations\201705101301095_InitialCreate.Designer.cs">
-      <DependentUpon>201705101301095_InitialCreate.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201705101341562_database-update.cs" />
-    <Compile Include="Migrations\201705101341562_database-update.Designer.cs">
-      <DependentUpon>201705101341562_database-update.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ApplicationUser.cs" />
     <Compile Include="Models\Article.cs" />
@@ -1041,17 +1037,7 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Controllers\" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\201705101301095_InitialCreate.resx">
-      <DependentUpon>201705101301095_InitialCreate.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201705101341562_database-update.resx">
-      <DependentUpon>201705101341562_database-update.cs</DependentUpon>
-    </EmbeddedResource>
-  </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

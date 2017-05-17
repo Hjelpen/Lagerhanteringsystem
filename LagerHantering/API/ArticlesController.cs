@@ -6,61 +6,56 @@ using System.Web.Http;
 using System.Web.Http.Description;
 using LagerHantering.Models;
 using LagerHantering.Providers;
-using LagerHantering.Repositories;
+using System.Collections.Generic;
 
 namespace LagerHantering.API
 {
-    public class ComponentsController : ApiController
+    public class ArticlesController : ApiController
     {
         private DataAcess.DbContext db = DbContextProvider.Instance.DbContext;
-        private UserRepository _repo = new UserRepository();
 
-        // GET: api/Components
-        public IQueryable<Component> GetComponents()
+        // GET: api/Articles
+        public IQueryable<Article> GetArticles()
         {
-            return db.Components;
+            return db.Articles;
         }
 
-        // GET: api/Components/5
-        [ResponseType(typeof(Component))]
-        [HttpGet]
-        public IHttpActionResult GetComponent(int id)
+        // GET: api/Articles/5
+        [ResponseType(typeof(Article))]
+        public IHttpActionResult GetArticle(int id)
         {
-            Component component = db.Components.Where(x => x.Id == id).FirstOrDefault();
-            if (component == null)
+            Article article = db.Articles.Find(id);
+            if (article == null)
             {
                 return NotFound();
             }
 
-            return Ok(component);
+            return Ok(article);
         }
 
-        // PUT: api/Components/5
+        // PUT: api/Articles/5
         [ResponseType(typeof(void))]
-        [HttpPut]
-        public IHttpActionResult Component(int id, Component component)
+        public IHttpActionResult PutArticle(int id, Article article)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            if (id != component.Id)
+            if (id != article.Id)
             {
                 return BadRequest();
             }
 
-            
-            db.Entry(component).State = EntityState.Modified;
+            db.Entry(article).State = EntityState.Modified;
 
             try
             {
-                
                 db.SaveChanges();
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!ComponentExists(id))
+                if (!ArticleExists(id))
                 {
                     return NotFound();
                 }
@@ -73,39 +68,44 @@ namespace LagerHantering.API
             return StatusCode(HttpStatusCode.NoContent);
         }
 
-       
-
-
-        // POST: api/Components
-        [ResponseType(typeof(Component))]
-        public IHttpActionResult PostComponent(Component component)
+        // POST: api/Articles
+        [ResponseType(typeof(Article))]
+        public IHttpActionResult PostArticle(Article article)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            db.Components.Add(component);
+            var components = new List<Component>();
+            foreach (var component in article.Components)
+            {
+                components.Add(db.Components.Find(component.Id));
+            }
+
+            article.Components = null;
+            article.Components = components;
+
+            db.Articles.Add(article);
             db.SaveChanges();
 
-            return CreatedAtRoute("DefaultApi", new { id = component.Id }, component);
+            return CreatedAtRoute("DefaultApi", new { id = article.Id }, article);
         }
 
-        // DELETE: api/Components/5
-        [ResponseType(typeof(Component))]
-        [HttpDelete]
-        public IHttpActionResult DeleteComponent(int id)
+        // DELETE: api/Articles/5
+        [ResponseType(typeof(Article))]
+        public IHttpActionResult DeleteArticle(int id)
         {
-            Component component = db.Components.Find(id);
-            if (component == null)
+            Article article = db.Articles.Find(id);
+            if (article == null)
             {
                 return NotFound();
             }
 
-            db.Components.Remove(component);
+            db.Articles.Remove(article);
             db.SaveChanges();
 
-            return Ok(component);
+            return Ok(article);
         }
 
         protected override void Dispose(bool disposing)
@@ -118,9 +118,9 @@ namespace LagerHantering.API
             base.Dispose(disposing);
         }
 
-        private bool ComponentExists(int id)
+        private bool ArticleExists(int id)
         {
-            return db.Components.Count(e => e.Id == id) > 0;
+            return db.Articles.Count(e => e.Id == id) > 0;
         }
     }
 }

@@ -20,13 +20,7 @@
                    .then(function (response) {
                        return response;
                    });
-           };
-           var _UpdateQuantity = function (Quantity) {
-               return $http.put('http://localhost:45559/api/Components', Quantity)
-                   .then(function (response) {
-                       return response;
-                   });
-           };
+           };   
 
            var _getComponent = function (id) {
                return $http.get('http://localhost:45559/api/Components/getComponent/?id=' + id)
@@ -34,7 +28,6 @@
                        return response;
                    });
            }
-           componentServiceFactory.UpdateQuantity = _UpdateQuantity;
            componentServiceFactory.getComponents = _getComponents;
            componentServiceFactory.addComponent = _addComponent;
            componentServiceFactory.getComponent = _getComponent;

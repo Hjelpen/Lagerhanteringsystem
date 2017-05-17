@@ -194,7 +194,6 @@
     <Content Include="AngularApp\app.module.js" />
     <Content Include="AngularApp\appRouting.js" />
     <Content Include="AngularApp\Controllers\articleControllerjs.js" />
-    <Content Include="AngularApp\Controllers\deliveryInController.js" />
     <Content Include="AngularApp\Controllers\editComponentController.js" />
     <Content Include="AngularApp\Controllers\homeController.js" />
     <Content Include="AngularApp\Controllers\indexController.js" />
@@ -206,7 +205,6 @@
     <Content Include="AngularApp\Services\loginService.js" />
     <Content Include="AngularApp\Services\registerService.js" />
     <Content Include="AngularApp\Views\article.html" />
-    <Content Include="AngularApp\Views\deliveryIn.html" />
     <Content Include="AngularApp\Views\editComponent.html" />
     <Content Include="AngularApp\Views\home.html" />
     <Content Include="AngularApp\Views\component.html" />

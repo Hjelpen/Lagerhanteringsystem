@@ -1,6 +1,6 @@
 ﻿(function () {
     angular.module('App')
-        .controller('articleController', ['$scope', '$http', 'componentService', 'articleService', function ($scope, $http, componentService, articleService) {
+        .controller('articleController', ['$scope', '$http', 'componentService', 'articleService', '$location', function ($scope, $http, componentService, articleService, $location) {
 
             //scope.Components håller alla komponenter som kommer från databasen,
             //scope.selectedComponents håller tillfälligt de valda komponenter som ska sparas i en artikel.
@@ -17,7 +17,7 @@
             //Kallar på funktionen getComponent från componentService.js för att hämta alla komponenter,
             //sen fyller scope.components arrayn med datan den får tillbaka.
             $scope.getAllComponents = function () {
-                componentService.getComponent().then(function (response) {
+                componentService.getComponents().then(function (response) {
                     $scope.components = response.data
                 },
                  function (response) {
@@ -43,7 +43,7 @@
             $scope.saveArticle = function () {
                 articleService.addArticle($scope.article).then(function (response) {
                     console.log($scope.article)
-                    $scope.article = null;
+                    
                 },
                 function (response) {
                     response

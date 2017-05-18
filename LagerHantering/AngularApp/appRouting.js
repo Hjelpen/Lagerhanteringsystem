@@ -28,7 +28,7 @@
                 templateUrl: "/AngularApp/Views/article.html"
             });
 
-            $routeProvider.when("/componentEdit/:id", {
+            $routeProvider.when("/componentEdit/:componentId", {
                 controller: "editComponentController",
                 templateUrl: "/AngularApp/Views/editComponent.html"
             });

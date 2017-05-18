@@ -55,7 +55,6 @@ namespace LagerHantering.API
                     Component = component
                 };
 
-
             }
 
             catch (DbUpdateConcurrencyException)
@@ -74,13 +73,47 @@ namespace LagerHantering.API
 
                 }
             }
-
-
-
         }
 
+        [HttpPut]
+        [Route("api/Components/AddAmountComponent")]
+        public dynamic AddAmountComponent(int id, int amount)
+        {
 
+            Component component = db.Components.Where(x => x.ComponentId == id).FirstOrDefault();
 
+            component.Amount = component.Amount + amount;
+
+            db.Entry(component).State = EntityState.Modified;
+
+            try
+            {
+
+                db.SaveChanges();
+                return new
+                {
+                    Success = true,
+                    Component = component
+                };
+            }
+
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!ComponentExists(id))
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    return new
+                    {
+                        Success = false,
+                        Component = component
+                    };
+
+                }
+            }
+        }
 
         // POST: api/Components
         [ResponseType(typeof(Component))]

@@ -32,7 +32,15 @@
                             $scope.editComponent();
                             return response;
                         });
-            }
+            };
+
+            $scope.addComponentAmount = function () {
+                $http.put('http://localhost:45559/api/components/AddAmountComponent?id=' + $scope.id + '&amount=' + $scope.Update.amount)
+                       .then(function (response) {
+                           $scope.editComponent();
+                           return response;
+                       });
+            };
 
         }]);
 })();

@@ -2,7 +2,7 @@
     angular.module('App')
         .controller('editComponentController', ['$scope', '$http', 'componentService', '$routeParams', function ($scope, $http, componentService, $routeParams) {
             $scope.id = '',
-            $scope.id = $routeParams.id;
+            $scope.id = $routeParams.componentId;
 
             //håller användarens input från html fomuläret
             $scope.component = {

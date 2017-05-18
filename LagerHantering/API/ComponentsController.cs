@@ -40,7 +40,7 @@ namespace LagerHantering.API
         public dynamic EditComponent(int id, int amount)
         {
 
-            Component component = db.Components.Where(x => x.Id == id).FirstOrDefault();
+            Component component = db.Components.Where(x => x.ComponentId == id).FirstOrDefault();
             component.Amount = amount;
 
             db.Entry(component).State = EntityState.Modified;

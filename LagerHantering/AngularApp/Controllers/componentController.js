@@ -39,10 +39,10 @@
 
             //Tar bort komponent, skickar objektets id till controllern api som tar bort den fårn databasen.
             $scope.deleteComponent = function (index) {
-                if (confirm("Vill du ta bort komponenten")) {
+                if (confirm("Vill du ta bort komponenten" + " " + $scope.components[index].name)) {
                     $http({
                         method: 'DELETE',
-                        url: 'http://localhost:45559/api/Components/' + $scope.components[index].id,
+                        url: 'http://localhost:45559/api/Components/' + $scope.components[index].componentId,
                     }).then(function successCallback(response) {
                         $scope.components.splice(index, 1);
                     }, function errorCallback(response) {

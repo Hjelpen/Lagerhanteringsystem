@@ -14,14 +14,14 @@
            };
 
            //hämtar alla artiklar från databasen med webapi.
-           var _getArticle = function () {
+           var _getArticles = function () {
                return $http.get('http://localhost:45559/api/Articles')
                    .then(function (response) {
                        return response;
                    });
            }
 
-           articleServiceFactory.getArticle = _getArticle;
+           articleServiceFactory.getArticles = _getArticles;
            articleServiceFactory.addArticle = _addArticle;
            return articleServiceFactory;
 

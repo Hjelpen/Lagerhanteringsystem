@@ -26,7 +26,7 @@ namespace LagerHantering.API
         [HttpGet]
         public IHttpActionResult GetComponent(int id)
         {
-            Component component = db.Components.Where(x => x.Id == id).FirstOrDefault();
+            Component component = db.Components.Where(x => x.ComponentId == id).FirstOrDefault();
             if (component == null)
             {
                 return NotFound();
@@ -94,7 +94,7 @@ namespace LagerHantering.API
             db.Components.Add(component);
             db.SaveChanges();
 
-            return CreatedAtRoute("DefaultApi", new { id = component.Id }, component);
+            return CreatedAtRoute("DefaultApi", new { id = component.ComponentId }, component);
         }
 
         // DELETE: api/Components/5
@@ -126,7 +126,7 @@ namespace LagerHantering.API
 
         private bool ComponentExists(int id)
         {
-            return db.Components.Count(e => e.Id == id) > 0;
+            return db.Components.Count(e => e.ComponentId == id) > 0;
         }
     }
 }

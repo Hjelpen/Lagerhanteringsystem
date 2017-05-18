@@ -15,10 +15,10 @@ namespace LagerHantering.Models
             this.Components = new HashSet<Component>();
         }
 
-        public int Id { get; set; }
+        public int ArticleId { get; set; }
         public string Name { get; set; }
 
-        
+       // [JsonIgnore]
         public virtual ICollection<Component> Components { get; set; }
     }
 }

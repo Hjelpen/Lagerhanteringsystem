@@ -18,7 +18,7 @@ namespace LagerHantering.Models
         public int ArticleId { get; set; }
         public string Name { get; set; }
 
-       // [JsonIgnore]
+      //[JsonIgnore]
         public virtual ICollection<Component> Components { get; set; }
     }
 }

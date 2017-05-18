@@ -27,20 +27,27 @@
             }
 
             $scope.updateInvFunction = function () {
-                $http.put('http://localhost:45559/api/components/editcomponent?id=' + $scope.id + '&amount=' + $scope.Update.amount)
-                        .then(function (response) {
-                            $scope.editComponent();
-                            return response;
-                        });
-            };
+                if (confirm("Vill du ändra antalet komponenter på " + $scope.component.name + " till " + $scope.Update.amount)) {
+                    $http.put('http://localhost:45559/api/components/editcomponent?id=' + $scope.id + '&amount=' + $scope.Update.amount)
+                    .then(function (response) {
+                        $scope.editComponent();
+                        $scope.Update.amount = "";
+                        return response;
+                    });
+                }};
+
 
             $scope.addComponentAmount = function () {
-                $http.put('http://localhost:45559/api/components/AddAmountComponent?id=' + $scope.id + '&amount=' + $scope.Update.amount)
-                       .then(function (response) {
-                           $scope.editComponent();
-                           return response;
-                       });
+                if (confirm("Vill du lägga till antalet " + $scope.Update.amount + " till komponenten " + $scope.component.name)) {
+                    $http.put('http://localhost:45559/api/components/AddAmountComponent?id=' + $scope.id + '&amount=' + $scope.Update.amount)
+                     .then(function (response) {
+                         $scope.editComponent();
+                         $scope.Update.amount = "";
+                         return response;
+                     });
+                }
             };
+
 
         }]);
 })();

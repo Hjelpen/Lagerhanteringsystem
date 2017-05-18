@@ -42,7 +42,7 @@ namespace LagerHantering.API
                 return BadRequest(ModelState);
             }
 
-            if (id != article.Id)
+            if (id != article.ArticleId)
             {
                 return BadRequest();
             }
@@ -80,7 +80,7 @@ namespace LagerHantering.API
             var components = new List<Component>();
             foreach (var component in article.Components)
             {
-                components.Add(db.Components.Find(component.Id));
+                components.Add(db.Components.Find(component.ComponentId));
             }
 
             article.Components = null;
@@ -89,7 +89,7 @@ namespace LagerHantering.API
             db.Articles.Add(article);
             db.SaveChanges();
 
-            return CreatedAtRoute("DefaultApi", new { id = article.Id }, article);
+            return CreatedAtRoute("DefaultApi", new { id = article.ArticleId }, article);
         }
 
         // DELETE: api/Articles/5
@@ -120,7 +120,7 @@ namespace LagerHantering.API
 
         private bool ArticleExists(int id)
         {
-            return db.Articles.Count(e => e.Id == id) > 0;
+            return db.Articles.Count(e => e.ArticleId == id) > 0;
         }
     }
 }

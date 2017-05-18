@@ -6,7 +6,7 @@
             //scope.selectedComponents håller tillfälligt de valda komponenter som ska sparas i en artikel.
             $scope.components = [];
             $scope.selectedComponents = [];
-
+            $scope.articles = [];
 
             //sparar artikelns namn och listan med valda komponenter
             $scope.article = {
@@ -47,6 +47,12 @@
                 },
                 function (response) {
                     response
+                });
+            };
+          
+            $scope.getallArticles = function () {
+                articleService.getArticles().then(function (response) {
+                    $scope.articles = response.data
                 });
             };
             

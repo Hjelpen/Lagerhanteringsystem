@@ -36,28 +36,28 @@ namespace LagerHantering.API
         }
 
         // PUT: api/Components/5
-        [ResponseType(typeof(void))]
         [HttpPut]
-        public IHttpActionResult Component(int id, Component component)
+        public dynamic EditComponent(int id, int amount)
         {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
 
-            if (id != component.Id)
-            {
-                return BadRequest();
-            }
+            Component component = db.Components.Where(x => x.Id == id).FirstOrDefault();
+            component.Amount = amount;
 
-            
             db.Entry(component).State = EntityState.Modified;
 
             try
             {
-                
+
                 db.SaveChanges();
+                return new
+                {
+                    Success = true,
+                    Component = component
+                };
+
+
             }
+
             catch (DbUpdateConcurrencyException)
             {
                 if (!ComponentExists(id))
@@ -66,14 +66,20 @@ namespace LagerHantering.API
                 }
                 else
                 {
-                    throw;
+                    return new
+                    {
+                        Success = false,
+                        Component = component
+                    };
+
                 }
             }
 
-            return StatusCode(HttpStatusCode.NoContent);
+
+
         }
 
-       
+
 
 
         // POST: api/Components

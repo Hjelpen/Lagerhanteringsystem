@@ -2,7 +2,7 @@
 <html>
 <head>
     <title></title>
-	<meta charset="utf-8" />
+    <meta charset="utf-8" />
 </head>
 <body>
     <div ng-controller="editComponentController" ng-init="editComponent()">
@@ -25,8 +25,10 @@
                     <td>{{component.amount}}</td>
                     <td>
                         {{component.price}}
-                        <button class="glyphicon glyphicon-trash" type="submit" ng-click="deleteComponent($index)"></button>
+                        <input type="number" ng-model="Update.amount" />
+                        <button class="glyphicon glyphicon-upload" type="submit" ng-click="updateInvFunction()"></button>
                     </td>
+
                 </tr>
             </tbody>
         </table>

@@ -20,7 +20,7 @@
                    .then(function (response) {
                        return response;
                    });
-           };   
+           };
 
            var _getComponent = function (id) {
                return $http.get('http://localhost:45559/api/Components/getComponent/?id=' + id)
@@ -28,10 +28,18 @@
                        return response;
                    });
            }
+
+
+
+
            componentServiceFactory.getComponents = _getComponents;
            componentServiceFactory.addComponent = _addComponent;
            componentServiceFactory.getComponent = _getComponent;
+
+
            return componentServiceFactory;
+
+
 
 
 

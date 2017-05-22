@@ -1,5 +1,4 @@
-﻿using System.Data.Entity;
-using System.Data.Entity.Infrastructure;
+﻿using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Net;
 using System.Web.Http;
@@ -7,17 +6,24 @@ using System.Web.Http.Description;
 using LagerHantering.Models;
 using LagerHantering.Providers;
 using System.Collections.Generic;
+using LagerHantering.DataAcess;
+using System.Data.Entity;
+using System;
+using LagerHantering.Repositories;
+using System.Security.Claims;
+using System.Net.Http;
 
 namespace LagerHantering.API
 {
     public class ArticlesController : ApiController
     {
-        private DataAcess.DbContext db = DbContextProvider.Instance.DbContext;
+        DefaultDbContext db = new DefaultDbContext();
+        private UserRepository _repo = new UserRepository();
 
         // GET: api/Articles
-        public IQueryable<Article> GetArticles()
+        public dynamic GetArticles()
         {
-            return db.Articles;
+            return db.Articles.ToList();
         }
 
         // GET: api/Articles/5
@@ -35,22 +41,35 @@ namespace LagerHantering.API
 
         // PUT: api/Articles/5
         [ResponseType(typeof(void))]
-        public IHttpActionResult PutArticle(int id, Article article)
+        public IHttpActionResult PutArticle(int id, int amount)
         {
-            if (!ModelState.IsValid)
+
+
+            Article article = db.Articles.Where(x => x.ArticleId == id).FirstOrDefault();
+
+            var articlecomponents = article.Components;
+
+            foreach (var component in articlecomponents)
             {
-                return BadRequest(ModelState);
+
+                var newamount = component.Amount - amount;
+
+
+                if (newamount < 0)
+                {
+                    return BadRequest();
+                }
+                component.Amount = component.Amount - amount;
             }
 
-            if (id != article.ArticleId)
-            {
-                return BadRequest();
-            }
 
             db.Entry(article).State = EntityState.Modified;
 
             try
             {
+                var user = GetCurrentUser();
+                var order = new Order { Amount = amount, Article = article.Name, Date = DateTime.Now, User = user};
+                db.Orders.Add(order);
                 db.SaveChanges();
             }
             catch (DbUpdateConcurrencyException)
@@ -108,14 +127,12 @@ namespace LagerHantering.API
             return Ok(article);
         }
 
-        protected override void Dispose(bool disposing)
+          private string GetCurrentUser()
         {
-            if (disposing)
-            {
-                DbContextProvider.Instance.DisposeContext();
-                db = null;
-            }
-            base.Dispose(disposing);
+            ClaimsPrincipal principal = Request.GetRequestContext().Principal as ClaimsPrincipal;
+            var userName = principal.Claims.Where(c => c.Type == "user_name").Single().Value;
+
+            return userName;
         }
 
         private bool ArticleExists(int id)

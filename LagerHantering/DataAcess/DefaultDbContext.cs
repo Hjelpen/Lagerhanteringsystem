@@ -5,9 +5,9 @@ using System.Data.Entity;
 
 namespace LagerHantering.DataAcess
 {
-    public class DbContext : IdentityDbContext<ApplicationUser>
+    public class DefaultDbContext : IdentityDbContext<ApplicationUser>
     {
-        public DbContext() : base("DbContext")
+        public DefaultDbContext() : base("DbContext")
         {
 
         }
@@ -15,6 +15,7 @@ namespace LagerHantering.DataAcess
         public DbSet<Component> Components { get; set; }
         public DbSet<Article> Articles { get; set; }
         public DbSet<Order> Orders { get; set; }
+        public DbSet<Receipt> Receipts { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

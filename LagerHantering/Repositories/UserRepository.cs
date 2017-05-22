@@ -11,13 +11,13 @@ namespace LagerHantering.Repositories
     public class UserRepository : IDisposable
     {
 
-        private DbContext _ctx;
+        private DefaultDbContext _ctx;
 
         private UserManager<ApplicationUser> _userManager;
 
         public UserRepository()
         {
-            _ctx = DbContextProvider.Instance.DbContext;
+            _ctx = new DefaultDbContext();
             _userManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(_ctx));
         }
 
@@ -50,7 +50,7 @@ namespace LagerHantering.Repositories
 
         public void Dispose()
         {
-            DbContextProvider.Instance.DisposeContext();
+
             _ctx = null;
             _userManager.Dispose();
         }

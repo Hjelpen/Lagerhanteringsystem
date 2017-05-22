@@ -8,7 +8,7 @@ namespace LagerHantering.Migrations
     using System.Data.Entity.Migrations;
     using System.Linq;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<LagerHantering.DataAcess.DbContext>
+    internal sealed class Configuration : DbMigrationsConfiguration<LagerHantering.DataAcess.DefaultDbContext>
     {
         public Configuration()
         {
@@ -16,9 +16,9 @@ namespace LagerHantering.Migrations
             ContextKey = "LagerHantering.DataAcess.DbContext";
         }
 
-        protected override void Seed(DataAcess.DbContext context)
+        protected override void Seed(DataAcess.DefaultDbContext context)
         {
-            DataAcess.DbContext userscontext = new DataAcess.DbContext();
+            DataAcess.DefaultDbContext userscontext = new DataAcess.DefaultDbContext();
             var userStore = new UserStore<ApplicationUser>(userscontext);
             var userManager = new UserManager<ApplicationUser>(userStore);
 

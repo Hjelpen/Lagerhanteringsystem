@@ -7,13 +7,16 @@ using System.Web.Http.Description;
 using LagerHantering.Models;
 using LagerHantering.Providers;
 using LagerHantering.Repositories;
+using LagerHantering.DataAcess;
+using System.Security.Claims;
+using System.Net.Http;
+using System;
 
 namespace LagerHantering.API
 {
     public class ComponentsController : ApiController
     {
-        private DataAcess.DbContext db = DbContextProvider.Instance.DbContext;
-        private UserRepository _repo = new UserRepository();
+        DefaultDbContext db = new DefaultDbContext();
 
         // GET: api/Components
         public IQueryable<Component> GetComponents()
@@ -89,7 +92,11 @@ namespace LagerHantering.API
             try
             {
 
+                var user = GetCurrentUser();
+                var receipt = new Receipt { Amount = amount, Component = component.Name, Date = DateTime.Now, User = user };
+                db.Receipts.Add(receipt);
                 db.SaveChanges();
+
                 return new
                 {
                     Success = true,
@@ -147,14 +154,12 @@ namespace LagerHantering.API
             return Ok(component);
         }
 
-        protected override void Dispose(bool disposing)
+        private string GetCurrentUser()
         {
-            if (disposing)
-            {
-                DbContextProvider.Instance.DisposeContext();
-                db = null;
-            }
-            base.Dispose(disposing);
+            ClaimsPrincipal principal = Request.GetRequestContext().Principal as ClaimsPrincipal;
+            var userName = principal.Claims.Where(c => c.Type == "user_name").Single().Value;
+
+            return userName;
         }
 
         private bool ComponentExists(int id)

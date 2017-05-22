@@ -33,6 +33,11 @@
                 templateUrl: "/AngularApp/Views/editComponent.html"
             });
 
+            $routeProvider.when("/articleoutbound", {
+                controller: "articleOutBoundController",
+                templateUrl: "/AngularApp/Views/articleOutBound.html"
+            });
+
             $routeProvider.otherwise({ redirectTo: "/home" });
 
         });

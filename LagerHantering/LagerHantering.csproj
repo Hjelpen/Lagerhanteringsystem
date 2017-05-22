@@ -194,21 +194,25 @@
     <Content Include="AngularApp\app.module.js" />
     <Content Include="AngularApp\appRouting.js" />
     <Content Include="AngularApp\Controllers\articleControllerjs.js" />
+    <Content Include="AngularApp\Controllers\articleOutBoundControllerjs.js" />
     <Content Include="AngularApp\Controllers\editComponentController.js" />
     <Content Include="AngularApp\Controllers\homeController.js" />
     <Content Include="AngularApp\Controllers\indexController.js" />
     <Content Include="AngularApp\Controllers\componentController.js" />
     <Content Include="AngularApp\Controllers\registerController.js" />
+    <Content Include="AngularApp\Controllers\statisticController.js" />
     <Content Include="AngularApp\Services\articleService.js" />
     <Content Include="AngularApp\Services\authInterceptorService.js" />
     <Content Include="AngularApp\Services\componentService.js" />
     <Content Include="AngularApp\Services\loginService.js" />
     <Content Include="AngularApp\Services\registerService.js" />
     <Content Include="AngularApp\Views\article.html" />
+    <Content Include="AngularApp\Views\articleOutBound.html" />
     <Content Include="AngularApp\Views\editComponent.html" />
     <Content Include="AngularApp\Views\home.html" />
     <Content Include="AngularApp\Views\component.html" />
     <Content Include="AngularApp\Views\register.html" />
+    <Content Include="AngularApp\Views\statistik.html" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -998,16 +1002,16 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
-    <Compile Include="DataAcess\DbContext.cs" />
+    <Compile Include="DataAcess\DefaultDbContext.cs" />
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ApplicationUser.cs" />
     <Compile Include="Models\Article.cs" />
     <Compile Include="Models\Component.cs" />
     <Compile Include="Models\Order.cs" />
+    <Compile Include="Models\Receipt .cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Providers\AuthorizationServerProvider.cs" />
-    <Compile Include="Providers\DbContextProvider.cs" />
     <Compile Include="Repositories\UserRepository.cs" />
   </ItemGroup>
   <ItemGroup>

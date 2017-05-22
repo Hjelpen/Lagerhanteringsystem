@@ -26,6 +26,7 @@
                 amount: ""
             }
 
+            //ändrar hela antalet på en komponent
             $scope.updateInvFunction = function () {
                 if (confirm("Vill du ändra antalet komponenter på " + $scope.component.name + " till " + $scope.Update.amount)) {
                     $http.put('http://localhost:45559/api/components/editcomponent?id=' + $scope.id + '&amount=' + $scope.Update.amount)
@@ -36,7 +37,7 @@
                     });
                 }};
 
-
+            //plussar på ett värde på en komponents mängd
             $scope.addComponentAmount = function () {
                 if (confirm("Vill du lägga till antalet " + $scope.Update.amount + " till komponenten " + $scope.component.name)) {
                     $http.put('http://localhost:45559/api/components/AddAmountComponent?id=' + $scope.id + '&amount=' + $scope.Update.amount)

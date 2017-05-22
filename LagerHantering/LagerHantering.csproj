@@ -195,6 +195,7 @@
     <Content Include="AngularApp\appRouting.js" />
     <Content Include="AngularApp\Controllers\articleControllerjs.js" />
     <Content Include="AngularApp\Controllers\articleOutBoundControllerjs.js" />
+    <Content Include="AngularApp\Controllers\editArticleController.js" />
     <Content Include="AngularApp\Controllers\editComponentController.js" />
     <Content Include="AngularApp\Controllers\homeController.js" />
     <Content Include="AngularApp\Controllers\indexController.js" />
@@ -209,6 +210,7 @@
     <Content Include="AngularApp\Services\statisticService.js" />
     <Content Include="AngularApp\Views\article.html" />
     <Content Include="AngularApp\Views\articleOutBound.html" />
+    <Content Include="AngularApp\Views\editArticle.html" />
     <Content Include="AngularApp\Views\editComponent.html" />
     <Content Include="AngularApp\Views\home.html" />
     <Content Include="AngularApp\Views\component.html" />

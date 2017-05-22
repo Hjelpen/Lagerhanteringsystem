@@ -13,8 +13,6 @@
                 Price: "",
             };
 
-
-
             $scope.editComponent = function () {
                 componentService.getComponent($scope.id).then(function (response) {
                     $scope.component = response.data

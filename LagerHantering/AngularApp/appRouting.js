@@ -43,6 +43,11 @@
                 templateUrl: "/AngularApp/Views/statistik.html"
             });
 
+            $routeProvider.when("/articleEdit/:articleId", {
+                controller: "editArticleController",
+                templateUrl: "/AngularApp/Views/editArticle.html"
+            });
+
             $routeProvider.otherwise({ redirectTo: "/home" });
 
         });

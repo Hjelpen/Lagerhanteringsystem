@@ -1,0 +1,35 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+	<meta charset="utf-8" />
+</head>
+<body>
+    <div ng-controller="editArticleController" ng-init="getArticle()">
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>Artikel</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td hidden="hidden">{{article.articleId}}</td>
+                    <td>{{article.name}}</td>
+                </tr>
+            <thead>
+                <tr>
+                    <th>Komponentnamn</th>
+                    <th>Antal</th>
+                </tr>
+            </thead>
+                <tr ng-repeat="component in article.components ">
+                    <td hidden="hidden">{{component.id}}</td>
+                    <td>{{component.name}}</td>
+                    <td>{{component.amount}}</td>
+                  </tr>
+        </table>
+        <button class="glyphicon glyphicon-trash" type="submit" ng-click="deleteArticle()"></button>
+        </div>
+</body>
+</html>

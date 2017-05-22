@@ -8,6 +8,8 @@
             $scope.selectedComponents = [];
             $scope.articles = [];
 
+            
+
             //sparar artikelns namn och listan med valda komponenter
             $scope.article = {
                 Name: "",
@@ -19,6 +21,7 @@
             $scope.getAllComponents = function () {
                 componentService.getComponents().then(function (response) {
                     $scope.components = response.data
+                    $scope.selectedOption = $scope.components[0];
                 },
                  function (response) {
                      (response)
@@ -45,13 +48,12 @@
                     
                 }
                 articleService.addArticle($scope.article).then(function (response) {
-                    $scope.getAllArticles();                    
-                },
-                function (response) {
-                    response
-                });
+                    $scope.selectedComponents.length = 0,
+                    $scope.article.Name = "",
+                    $scope.getAllArticles();               
+                })
             };
-          
+                        
             $scope.getAllArticles = function () {
                 articleService.getArticles().then(function (response) {
                     $scope.articles = response.data

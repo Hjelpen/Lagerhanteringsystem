@@ -19,14 +19,13 @@
                 </tr>
             <thead>
                 <tr>
-                    <th>Komponentnamn</th>
-                    <th>Antal</th>
+                    <th>Komponenter</th>
                 </tr>
             </thead>
                 <tr ng-repeat="component in article.components ">
                     <td hidden="hidden">{{component.id}}</td>
                     <td>{{component.name}}</td>
-                    <td>{{component.amount}}</td>
+
                   </tr>
         </table>
         <button class="glyphicon glyphicon-trash" type="submit" ng-click="deleteArticle()"></button>

@@ -206,6 +206,7 @@
     <Content Include="AngularApp\Services\componentService.js" />
     <Content Include="AngularApp\Services\loginService.js" />
     <Content Include="AngularApp\Services\registerService.js" />
+    <Content Include="AngularApp\Services\statisticService.js" />
     <Content Include="AngularApp\Views\article.html" />
     <Content Include="AngularApp\Views\articleOutBound.html" />
     <Content Include="AngularApp\Views\editComponent.html" />
@@ -1000,6 +1001,7 @@
     <Compile Include="API\AccountController.cs" />
     <Compile Include="API\ArticlesController.cs" />
     <Compile Include="API\ComponentsController.cs" />
+    <Compile Include="API\StatisticController.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />

@@ -38,6 +38,11 @@
                 templateUrl: "/AngularApp/Views/articleOutBound.html"
             });
 
+            $routeProvider.when("/statistik", {
+                controller: "statisticController",
+                templateUrl: "/AngularApp/Views/statistik.html"
+            });
+
             $routeProvider.otherwise({ redirectTo: "/home" });
 
         });

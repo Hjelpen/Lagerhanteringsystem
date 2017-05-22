@@ -31,6 +31,7 @@ namespace LagerHantering.API
         public IHttpActionResult GetArticle(int id)
         {
             Article article = db.Articles.Find(id);
+
             if (article == null)
             {
                 return NotFound();

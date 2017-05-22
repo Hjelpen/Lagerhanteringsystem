@@ -5,7 +5,7 @@
 	<meta charset="utf-8" />
 </head>
 <body>
-   <div ng-app="App" ng-controller="articleController" ng-init="getAllComponents()">
+   <div ng-controller="articleController" ng-init="getAllComponents()">
        Artikelnamn: <input type="text" class="form-control" data-ng-model="article.Name" />
         <select ng-model="selectedOption" ng-options="v.name for v in components "></select>
         <button class="btn btn-lg btn-info btn-block" type="submit" data-ng-click="saveComponent()">Spara komponent i lista</button> 
@@ -24,10 +24,23 @@
                 </tr>
             </tbody>
         </table>
-
         <button class="btn btn-lg btn-info btn-block" type="submit" data-ng-click="saveArticle()">Spara artikel</button>
     </div>
 
+ <div ng-controller="articleController" ng-init="getAllArticles()">
+          <br />
+          <hr />
+          <h2>Artiklar</h2>
+          <table>
+              <tr ng-repeat="article in articles">
+                  <td hidden="hidden">{{article.articleId}}</td>
+                  <td>{{article.name}}
+                      <a class="glyphicon glyphicon-edit" ng-href="#/articleEdit/{{article.articleId}}"></a>
+                  </td>
+              </tr>
+          </table>
+          <br />
+      </div>
 
 </body>
 </html>

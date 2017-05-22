@@ -21,8 +21,16 @@
                    });
            }
 
+           var _getArticle = function (id) {
+               return $http.get('http://localhost:45559/api/Articles/getArticle/?id=' + id)
+                   .then(function (response) {
+                       return response;
+                   });
+           }
+
            articleServiceFactory.getArticles = _getArticles;
            articleServiceFactory.addArticle = _addArticle;
+           articleServiceFactory.getArticle = _getArticle
            return articleServiceFactory;
 
        }]);

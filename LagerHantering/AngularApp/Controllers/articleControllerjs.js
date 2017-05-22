@@ -41,13 +41,20 @@
 
             //sparar artiklen, skickar den vidare till funktionen addArticle i articleService.js. Sen rensar scope article och selectedComponents
             $scope.saveArticle = function () {
-                articleService.addArticle($scope.article).then(function (response) {
-                    console.log($scope.article)
-                    
-                },
-                function (response) {
-                    response
-                });
+                if ($scope.selectedComponents.length > 0) {
+
+
+                    articleService.addArticle($scope.article).then(function(response) {
+
+                            console.log($scope.article)
+
+                        },
+                        function(response) {
+                            response
+                        });
+                } else {
+                    prompt
+                }
             };
           
             $scope.getallArticles = function () {

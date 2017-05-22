@@ -68,7 +68,7 @@ namespace LagerHantering.API
             try
             {
                 var user = GetCurrentUser();
-                var order = new Order { Amount = amount, Article = article.Name, Date = DateTime.Now, User = user};
+                var order = new Order { Amount = amount, Article = article.Name, Date = DateTime.Now, User = user };
                 db.Orders.Add(order);
                 db.SaveChanges();
             }
@@ -96,11 +96,13 @@ namespace LagerHantering.API
                 return BadRequest(ModelState);
             }
 
+
             var components = new List<Component>();
             foreach (var component in article.Components)
             {
                 components.Add(db.Components.Find(component.ComponentId));
             }
+
 
             article.Components = null;
             article.Components = components;
@@ -127,7 +129,7 @@ namespace LagerHantering.API
             return Ok(article);
         }
 
-          private string GetCurrentUser()
+        private string GetCurrentUser()
         {
             ClaimsPrincipal principal = Request.GetRequestContext().Principal as ClaimsPrincipal;
             var userName = principal.Claims.Where(c => c.Type == "user_name").Single().Value;

@@ -29,6 +29,7 @@
     <script src="AngularApp/Controllers/editComponentController.js"></script>
     <script src="AngularApp/Controllers/articleOutBoundControllerjs.js"></script>
     <script src="AngularApp/Controllers/statisticController.js"></script>
+    <script src="AngularApp/Services/statisticService.js"></script>
 
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 </head>
@@ -50,9 +51,9 @@
                     <ul class="nav navbar-nav navbar-right">
                         <li data-ng-hide="!authentication.isAuth"><a href="#/component">Komponenter</a></li>                       
                         <li data-ng-hide="!authentication.isAuth"><a href="/#/article">Skapa artiklar</a></li>
-                        <li data-ng-hide="!authentication.isAuth"><a href="/#/register">Skapa användare</a></li>
                         <li data-ng-hide="!authentication.isAuth"><a href="/#/articleoutbound">Utleverans</a></li>
-                        <li data-ng-hide="!authentication.isAuth"><a href="/#/articleoutbound">statistik</a></li>
+                        <li data-ng-hide="!authentication.isAuth"><a href="/#/statistik">Statistik</a></li>
+                        <li data-ng-hide="!authentication.isAuth"><a href="/#/register">Skapa användare</a></li>
                         <li data-ng-hide="!authentication.isAuth"><a href="" data-ng-click="logOut()">Logga ut</a></li>
                     </ul>
                 </div>

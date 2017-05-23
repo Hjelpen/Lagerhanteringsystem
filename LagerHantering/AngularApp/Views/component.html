@@ -2,7 +2,7 @@
 <html>
 <head>
     <title></title>
-	<meta charset="utf-8" />
+    <meta charset="utf-8" />
 </head>
 <body>
     <form class="form-horizontal" name="componentForm">
@@ -15,7 +15,9 @@
                 <input type="text" class="form-control" placeholder="Pris" data-ng-model="component.Price" />
                 <button class="btn btn-lg btn-info btn-block" type="submit" data-ng-click="saveComponent()">Spara</button>
                 <hr />
-                <table>
+
+                <table id="comptable" />
+                <table cellspacing='0'>
                     <thead>
                         <tr>
                             <th>Artikelnummer</th>
@@ -23,6 +25,7 @@
                             <th>Ledtid</th>
                             <th>Antal</th>
                             <th>Pris</th>
+                            <th>Redigera/ Ta Bort</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -32,16 +35,17 @@
                             <td>{{component.name}}</td>
                             <td>{{component.orderTime}}</td>
                             <td>{{component.amount}}</td>
-                            <td>{{component.price}}
+                            <td>{{component.price}}</td>
+                            <td>
                                 <button class="glyphicon glyphicon-trash" type="submit" ng-click="deleteComponent($index)"></button>
                                 <a class="glyphicon glyphicon-edit" ng-href="#/componentEdit/{{component.componentId}}"></a>
-                            </td>                                       
+                            </td>
                         </tr>
                     </tbody>
                 </table>
-                </div>
             </div>
+        </div>
     </form>
-    
+
 </body>
 </html>

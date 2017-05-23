@@ -14,6 +14,7 @@
                     <th>Ledtid</th>
                     <th>Antal</th>
                     <th>Pris</th>
+                    <th>Inmatning</th>
                 </tr>
             </thead>
             <tbody>
@@ -23,14 +24,13 @@
                     <td>{{component.name}}</td>
                     <td>{{component.orderTime}}</td>
                     <td>{{component.amount}}</td>
-                    <td>
-                        {{component.price}}
-                        <input type="number" ng-model="Update.amount" />
-                        <button class="glyphicon glyphicon-upload" type="submit" ng-click="updateInvFunction()"></button>
-                    </td>
+                    <td>{{component.price}} </td>
+                    
+                    <td><input type="number" ng-model="Update.amount" /></td>
                 </tr>
             </tbody>
         </table>
+        <button class="glyphicon glyphicon-upload" type="submit" ng-click="updateInvFunction()">Korrigera Lagersaldo</button>
         <button class="btn btn-lg btn-info btn-block" type="submit" ng-click="addComponentAmount()">Lägg tills</button>
     </div>
     <a href="#/component">Tillbaka</a>

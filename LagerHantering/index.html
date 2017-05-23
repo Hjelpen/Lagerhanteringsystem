@@ -2,16 +2,17 @@
 <html>
 <head>
     <title>Lagerhantering</title>
-	<meta charset="utf-8" />
+    <meta charset="utf-8" />
     <!-- angularjs library och css -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
     <script src=Scripts/angular.min.js></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="Scripts/angular-route.min.js"></script>
     <script src="Scripts/angular-local-storage.min.js"></script>
-    <script src="Scripts/angular-ui-bootstrap.js"></script>
     <link href="Content/bootstrap-theme.min.css" rel="stylesheet" />
     <link href="Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="Content/style.css" rel="stylesheet" />
+
 
 
 
@@ -38,6 +39,8 @@
 </head>
 
 <body ng-app="App">
+
+    <div id="nav">
         <nav class="navbar navbar-inverse" data-ng-controller="indexController">
             <div class="container-fluid">
                 <div class="navbar-header">
@@ -52,7 +55,7 @@
                 </div>
                 <div class="nav-collapse" data-toggle="collapse" data-target=".nav-collapse.in" id="bs-example-navbar-collapse-2">
                     <ul class="nav navbar-nav navbar-right">
-                        <li data-ng-hide="!authentication.isAuth"><a href="#/component">Komponenter</a></li>                       
+                        <li data-ng-hide="!authentication.isAuth"><a href="#/component">Komponenter</a></li>
                         <li data-ng-hide="!authentication.isAuth"><a href="/#/article">Artiklar</a></li>
                         <li data-ng-hide="!authentication.isAuth"><a href="/#/articleoutbound">Utleverans</a></li>
                         <li data-ng-hide="!authentication.isAuth"><a href="/#/statistik">Statistik</a></li>
@@ -62,10 +65,11 @@
                 </div>
             </div>
         </nav>
-        <div class="container">
-            <div data-ng-view="">
-            </div>
+    </div>
+    <div class="container">
+        <div data-ng-view="">
         </div>
+    </div>
 
-    </body>
+</body>
 </html>

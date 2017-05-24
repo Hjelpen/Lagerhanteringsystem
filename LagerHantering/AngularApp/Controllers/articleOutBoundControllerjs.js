@@ -4,7 +4,7 @@
 
             $scope.articles = [];
 
-            $scope.articleOutBound = {
+            $scope.article = {
                 id: "",
                 amount: ""
             };
@@ -15,11 +15,12 @@
             $scope.getallArticles = function () {
                 articleService.getArticles().then(function (response) {
                     $scope.articles = response.data
+                    console.log($scope.articles)
                 });
             };
 
-            $scope.articleOutBound = function () {
-                $http.put('http://localhost:45559/api/articles/putarticle?id=' + $scope.articleOutBound.id + '&amount=' + $scope.articleOutBound.amount)
+            $scope.articleOutBounds = function () {
+                $http.put('http://localhost:45559/api/articles/putarticle?id=' + $scope.article.id + '&amount=' + $scope.article.amount)
                   .then(function (response) {
                       return response;
                   });

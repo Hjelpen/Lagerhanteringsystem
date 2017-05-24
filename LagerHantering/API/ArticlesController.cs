@@ -12,6 +12,7 @@ using System;
 using LagerHantering.Repositories;
 using System.Security.Claims;
 using System.Net.Http;
+using LagerHantering.ViewModels;
 
 namespace LagerHantering.API
 {
@@ -30,14 +31,17 @@ namespace LagerHantering.API
         [ResponseType(typeof(Article))]
         public IHttpActionResult GetArticle(int id)
         {
-            Article article = db.Articles.Find(id);
-
-            if (article == null)
+            var articlecomponents = db.ArticleComponent
+                .Where(ac => ac.ArticleId == id)
+                .Select(ac => ac.Component)
+                .ToList();     
+            
+            if (articlecomponents == null)
             {
                 return NotFound();
             }
 
-            return Ok(article);
+            return Ok(articlecomponents);
         }
 
         // PUT: api/Articles/5
@@ -46,21 +50,26 @@ namespace LagerHantering.API
         {
 
 
-            Article article = db.Articles.Where(x => x.ArticleId == id).FirstOrDefault();
+            Article article = db.Articles.Where(x => x.Id == id).FirstOrDefault();
 
-            var articlecomponents = article.Components;
+            //var articlecomponents = article.Components;
+            var articlecomponents = db.ArticleComponent.Where(x => x.ArticleId == id).ToList();
 
-            foreach (var component in articlecomponents)
+
+            foreach (var articlecomponent in articlecomponents)
             {
 
-                var newamount = component.Amount - amount;
-
+                var component = db.Components.Where(x => x.Id == articlecomponent.ComponentId).FirstOrDefault();
+                var newamount = component.Amount - (amount * articlecomponent.ComponentAmount);
 
                 if (newamount < 0)
                 {
                     return BadRequest();
                 }
-                component.Amount = component.Amount - amount;
+
+                component.Amount = newamount;
+                
+
             }
 
 
@@ -90,28 +99,42 @@ namespace LagerHantering.API
 
         // POST: api/Articles
         [ResponseType(typeof(Article))]
-        public IHttpActionResult PostArticle(Article article)
+        public IHttpActionResult PostArticle(ArticleViewModel article)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
+           
 
-            var components = new List<Component>();
+            Article newArticle = new Article
+            {
+                Name = article.Name
+            };
+
+            db.Articles.Add(newArticle);
+
+            List<ArticleComponent> articleComponents = new List<ArticleComponent>();
+
             foreach (var component in article.Components)
             {
-                components.Add(db.Components.Find(component.ComponentId));
+                ArticleComponent articleComponent = new ArticleComponent();
+
+                articleComponent.ArticleId = newArticle.Id;
+                articleComponent.ComponentAmount = component.ComponentAmount;
+                articleComponent.ComponentId = component.Id;
+
+
+                articleComponents.Add(articleComponent);
+
             }
 
+            db.ArticleComponent.AddRange(articleComponents);
 
-            article.Components = null;
-            article.Components = components;
-
-            db.Articles.Add(article);
             db.SaveChanges();
 
-            return CreatedAtRoute("DefaultApi", new { id = article.ArticleId }, article);
+            return CreatedAtRoute("DefaultApi", new { id = article.Name }, article);
         }
 
         // DELETE: api/Articles/5
@@ -140,7 +163,7 @@ namespace LagerHantering.API
 
         private bool ArticleExists(int id)
         {
-            return db.Articles.Count(e => e.ArticleId == id) > 0;
+            return db.Articles.Count(e => e.Id == id) > 0;
         }
     }
 }

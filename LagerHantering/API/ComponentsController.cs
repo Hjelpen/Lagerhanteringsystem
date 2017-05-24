@@ -29,7 +29,7 @@ namespace LagerHantering.API
         [HttpGet]
         public IHttpActionResult GetComponent(int id)
         {
-            Component component = db.Components.Where(x => x.ComponentId == id).FirstOrDefault();
+            Component component = db.Components.Where(x => x.Id == id).FirstOrDefault();
             if (component == null)
             {
                 return NotFound();
@@ -43,7 +43,7 @@ namespace LagerHantering.API
         public dynamic EditComponent(int id, int amount)
         {
 
-            Component component = db.Components.Where(x => x.ComponentId == id).FirstOrDefault();
+            Component component = db.Components.Where(x => x.Id == id).FirstOrDefault();
             component.Amount = amount;
 
             db.Entry(component).State = EntityState.Modified;
@@ -83,7 +83,7 @@ namespace LagerHantering.API
         public dynamic AddAmountComponent(int id, int amount)
         {
 
-            Component component = db.Components.Where(x => x.ComponentId == id).FirstOrDefault();
+            Component component = db.Components.Where(x => x.Id == id).FirstOrDefault();
 
             component.Amount = component.Amount + amount;
 
@@ -134,7 +134,7 @@ namespace LagerHantering.API
             db.Components.Add(component);
             db.SaveChanges();
 
-            return CreatedAtRoute("DefaultApi", new { id = component.ComponentId }, component);
+            return CreatedAtRoute("DefaultApi", new { id = component.Id }, component);
         }
 
         // DELETE: api/Components/5
@@ -164,7 +164,7 @@ namespace LagerHantering.API
 
         private bool ComponentExists(int id)
         {
-            return db.Components.Count(e => e.ComponentId == id) > 0;
+            return db.Components.Count(e => e.Id == id) > 0;
         }
     }
 }

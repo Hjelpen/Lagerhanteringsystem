@@ -8,13 +8,13 @@
 
     <div id="controllerDiv" ng-controller="articleOutBoundController" ng-init="getallArticles()">
         <h1>Utleverans</h1>
-        <select name="article" class="col-lg-10" ng-model="articleOutBound.id"
-                ng-options="v.articleId as v.name for v in articles">
+        <select name="article" class="col-lg-10" ng-model="article.id"
+                ng-options="v.id as v.name for v in articles">
 
         </select>
         <br />
-        <input type="number" ng-model="articleOutBound.amount" />
-        <button class="btn btn-lg btn-info btn-block" type="submit" ng-click="articleOutBound()">Utleverans!</button>
+        <input type="number" ng-model="article.amount" />
+        <button class="btn btn-lg btn-info btn-block" type="submit" ng-click="articleOutBounds()">Utleverans!</button>
         </div>
 </body>
 </html>

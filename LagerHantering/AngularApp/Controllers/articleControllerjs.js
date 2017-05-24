@@ -8,7 +8,12 @@
             $scope.selectedComponents = [];
             $scope.articles = [];
 
-            
+
+            $scope.articleComponents =
+                {
+                    component: $scope.selectedOption,
+                    componentamount: ""
+                };
 
             //sparar artikelns namn och listan med valda komponenter
             $scope.article = {
@@ -30,7 +35,9 @@
 
             //sparar valda komponenter i en tillfällig array 'scope.selectedComponents' 
             $scope.saveComponent = function () {
+                $scope.selectedOption.componentAmount = $scope.articleComponents.componentamount
                 $scope.selectedComponents.push($scope.selectedOption)
+                    
                 console.log($scope.selectedComponents);
             };
 
@@ -44,9 +51,6 @@
 
             //sparar artiklen, skickar den vidare till funktionen addArticle i articleService.js. Sen rensar scope article och selectedComponents
             $scope.saveArticle = function () {
-                if ($scope.selectedComponents.length) {
-                    
-                }
                 articleService.addArticle($scope.article).then(function (response) {
                     $scope.selectedComponents.length = 0,
                     $scope.article.Name = "",

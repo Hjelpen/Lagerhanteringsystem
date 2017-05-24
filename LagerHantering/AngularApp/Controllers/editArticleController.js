@@ -2,13 +2,13 @@
     angular.module('App')
         .controller('editArticleController', ['$scope', '$http', 'articleService', '$routeParams', '$location', function ($scope, $http, articleService, $routeParams, $location) {
             $scope.id = '',
-            $scope.id = $routeParams.articleId;
+            $scope.id = $routeParams.id;
 
-            $scope.article = [];
+            $scope.components = [];
 
             $scope.getArticle = function () {
                 articleService.getArticle($scope.id).then(function (response) {
-                    $scope.article = response.data
+                    $scope.components = response.data
                 });
             };
 

@@ -10,15 +10,8 @@ namespace LagerHantering.Models
 {
     public class Article
     {
-        public Article()
-        {
-            this.Components = new HashSet<Component>();
-        }
-
-        public int ArticleId { get; set; }
+        public int Id { get; set; }
         public string Name { get; set; }
-
-      //[JsonIgnore]
-        public virtual ICollection<Component> Components { get; set; }
+               
     }
 }

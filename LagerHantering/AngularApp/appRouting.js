@@ -43,7 +43,7 @@
                 templateUrl: "/AngularApp/Views/statistik.html"
             });
 
-            $routeProvider.when("/articleEdit/:articleId", {
+            $routeProvider.when("/articleEdit/:id", {
                 controller: "editArticleController",
                 templateUrl: "/AngularApp/Views/editArticle.html"
             });

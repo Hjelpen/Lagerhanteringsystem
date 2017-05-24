@@ -14,7 +14,7 @@
             </thead>
             <tbody>
                 <tr>
-                    <td hidden="hidden">{{article.articleId}}</td>
+                    <td hidden="hidden">{{article.Id}}</td>
                     <td>{{article.name}}</td>
                 </tr>
             <thead>
@@ -22,7 +22,7 @@
                     <th>Komponenter</th>
                 </tr>
             </thead>
-                <tr ng-repeat="component in article.components ">
+                <tr ng-repeat="component in components">
                     <td hidden="hidden">{{component.id}}</td>
                     <td>{{component.name}}</td>
 

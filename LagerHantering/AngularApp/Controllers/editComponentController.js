@@ -1,6 +1,6 @@
 ﻿(function () {
     angular.module('App')
-        .controller('editComponentController', ['$scope', '$http', 'componentService', '$routeParams', function ($scope, $http, componentService, $routeParams) {
+        .controller('editComponentController', ['$scope', '$http', 'componentService', '$routeParams', '$location', function ($scope, $http, componentService, $routeParams, $location) {
             $scope.id = '',
             $scope.id = $routeParams.componentId;
 
@@ -44,6 +44,20 @@
                          $scope.Update.amount = "";
                          return response;
                      });
+                }
+            };
+
+            //Tar bort komponent, skickar objektets id till controllern api som tar bort den från databasen.
+            $scope.deleteComponent = function () {
+                if (confirm("Vill du ta bort komponenten" + " " + $scope.id)) {
+                    $http({
+                        method: 'DELETE',
+                        url: 'http://localhost:45559/api/Components/' + $scope.id,
+                    }).then(function successCallback(response) {
+                        $location.path('/component');
+                    }, function errorCallback(response) {
+                        alert("Error : " + response.data.ExceptionMessage);
+                    });
                 }
             };
 

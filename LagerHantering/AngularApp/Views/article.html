@@ -13,7 +13,7 @@
         <select class="form-control" ng-model="selectedOption" ng-options="v.name for v in components ">
            
         </select> 
-       <input type="number" ng-model="articleComponents.componentamount" />     
+       <input type="number" min="1" ng-model="articleComponents.componentamount" />     
         <button class="btn btn-lg btn-info btn-block" type="submit" data-ng-click="saveComponent()">Lägg till komponent i lista</button> 
         <table>
             <thead>

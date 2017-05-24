@@ -14,6 +14,12 @@
                 Price: "",
             };
 
+            $scope.totalprice = 0
+               
+
+            
+
+           
             //Tar in användarens input från scope.component och skickar den vidare till componentService och funktionen addComponent
             //sen kallar på getAllComponents för att ladda om listan med alla komponenter.
             $scope.saveComponent = function () {
@@ -31,26 +37,15 @@
             $scope.getAllComponents = function () {
                 componentService.getComponents().then(function (response) {
                     $scope.components = response.data
+
+                    for (var i = 0; i < $scope.components.length; i++) {
+                        $scope.totalprice += ($scope.components[i].price * $scope.components[i].amount)
+                    }
                 },
                  function (response) {
                      (response)
                  });
-            };
-
-            //Tar bort komponent, skickar objektets id till controllern api som tar bort den fårn databasen.
-            $scope.deleteComponent = function (index) {
-                if (confirm("Vill du ta bort komponenten" + " " + $scope.components[index].name)) {
-                    $http({
-                        method: 'DELETE',
-                        url: 'http://localhost:45559/api/Components/' + $scope.components[index].id,
-                    }).then(function successCallback(response) {
-                        $scope.components.splice(index, 1);
-                    }, function errorCallback(response) {
-                        alert("Error : " + response.data.ExceptionMessage);
-                    });
-                }
-            };
-                   
+            };                   
                
         }]);
 })();

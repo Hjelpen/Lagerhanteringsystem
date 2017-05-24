@@ -23,8 +23,9 @@
                             <th>Namn</th>
                             <th>Ledtid</th>
                             <th>Antal</th>
-                            <th>Pris</th>
-                            <th>Redigera/ Ta Bort</th>
+                            <th>StyckPris</th>
+                            <th>Totalt pris</th>
+                            <th>Redigera</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -35,13 +36,14 @@
                             <td>{{component.orderTime}}</td>
                             <td>{{component.amount}}</td>
                             <td>{{component.price}}</td>
+                            <td>{{component.price * component.amount}}</td>
                             <td>
-                                <button class="glyphicon glyphicon-trash" type="submit" ng-click="deleteComponent($index)"></button>
                                 <a class="glyphicon glyphicon-edit" ng-href="#/componentEdit/{{component.id}}"></a>
                             </td>
                         </tr>
                     </tbody>
                 </table>
+                {{totalprice}}
             </div>
         </div>
     </form>

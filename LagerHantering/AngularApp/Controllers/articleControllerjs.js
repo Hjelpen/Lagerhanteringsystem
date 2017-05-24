@@ -8,7 +8,6 @@
             $scope.selectedComponents = [];
             $scope.articles = [];
 
-
             $scope.articleComponents =
                 {
                     component: $scope.selectedOption,

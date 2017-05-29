@@ -21,10 +21,10 @@
                         <tr>
                             <th>Artikelnummer</th>
                             <th>Namn</th>
-                            <th>Ledtid</th>
+                            <th>Ledtid i dagar</th>
                             <th>Antal i lager</th>
-                            <th>StyckPris</th>
-                            <th>Totalt pris</th>
+                            <th>StyckPris SEK</th>
+                            <th>Totalt pris SEK</th>
                             <th>Redigera</th>
                         </tr>
                     </thead>
@@ -35,8 +35,8 @@
                             <td>{{component.name}}</td>
                             <td>{{component.orderTime}}</td>
                             <td>{{component.amount}}</td>
-                            <td>{{component.price}}</td>
-                            <td>{{component.price * component.amount}}</td>
+                            <td>{{component.price}} ;-</td>
+                            <td>{{component.price * component.amount}} ;-</td>
                             <td>
                                 <a class="glyphicon glyphicon-edit" ng-href="#/componentEdit/{{component.id}}"></a>
                             </td>
@@ -49,7 +49,7 @@
                 <table cellspacing='0'>
                     <thead>
                         <tr>
-                            <th>Totala Lagersaldot</th>
+                            <th>Totala Lagervärdet</th>
                         </tr>
                     </thead>
                     <tbody>

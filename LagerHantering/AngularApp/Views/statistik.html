@@ -5,43 +5,51 @@
     <meta charset="utf-8" />
 </head>
 <body>
-    <div class="row">
-    <div id="statistic1" class="col-md-6" ng-controller="statisticController" ng-init="getAllOrders()">
-        <h1>Utleveranser</h1>
-        <table border="1">
-            <tr>
-                <th>Artikel</th>
-                <th>Antal </th>
-                <th>Datum </th>
-                <th>Kommentar</th>
-                <th>Användare </th>
-            </tr>
-            <tr ng-repeat="order in orders | orderBy:'createdate':true">
-                <td>{{order.article}}</td>
-                <td>{{order.amount}}</td>
-                <td>{{order.date}}</td>
-                <td>{{order.comment}}</td>
-                <td>{{order.user}}</td>
-            </tr>
-        </table>
-    </div>
-    <div id="statistic2" class="col-md-6" ng-controller="statisticController" ng-init="getAllReceipts()">
-        <h2>Inleveranser</h2>
-        <table border="1">
-            <tr>
-                <th>Komponent</th>
-                <th>Antal </th>
-                <th>Datum </th>
-                <th>Användare </th>
-            </tr>
-            <tr ng-repeat="receipt in receipts | orderBy:'createdate':true">
-                <td>{{receipt.component}}</td>
-                <td>{{receipt.amount}}</td>
-                <td>{{receipt.date }}</td>
-                <td>{{receipt.user}}</td>
-            </tr>
-        </table>
-    </div>
-    </div>
+    <div  class="row">
+       
+            <div id="statistic2" class="col-md-6 col-xs-12">
+
+              
+
+                    <h1>Utleveranser</h1>
+                    <table border="1" class="table-responsive" ng-controller="statisticController" ng-init="getAllOrders()">
+                        <tr>
+                            <th>Artikel</th>
+                            <th>Antal </th>
+                            <th>Datum </th>
+                            <th>Kommentar</th>
+                            <th>Användare </th>
+                        </tr>
+                        <tr ng-repeat="order in orders | orderBy:'createdate':true">
+                            <td>{{order.article}}</td>
+                            <td>{{order.amount}}</td>
+                            <td>{{order.date | date: "yyyy/mm/dd"}}</td>
+                            <td>{{order.comment}}</td>
+                            <td>{{order.user}}</td>
+                        </tr>
+                    </table>
+                </div>
+            
+            <div id="statistic1" class="col-md-6 col-xs-12">
+              
+                    <h1>Inleveranser</h1>
+                    <table border="1" class="table-responsive" ng-controller="statisticController" ng-init="getAllReceipts()">
+                        <tr>
+                            <th>Komponent</th>
+                            <th>Antal </th>
+                            <th>Datum </th>
+                            <th>Användare </th>
+                        </tr>
+                        <tr ng-repeat="receipt in receipts | orderBy:'createdate':true">
+                            <td>{{receipt.component}}</td>
+                            <td>{{receipt.amount}}</td>
+                            <td>{{receipt.date | date: "yyyy/mm/dd" }}</td>
+                            <td>{{receipt.user}}</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+       
+   
 </body>
 </html>

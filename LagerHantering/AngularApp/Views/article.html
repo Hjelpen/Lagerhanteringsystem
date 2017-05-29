@@ -19,14 +19,17 @@
             <thead>
                 <tr>
                     <th>Komponenter</th>
+                    <th>Antal i artikeln</th>
                 </tr>
             </thead>
             <tbody>
                 <tr ng-repeat="component in selectedComponents track by $index">
                     <td hidden="hidden">{{component.id}}</td>
-                    <td>{{component.name}}
-                        <button class="glyphicon glyphicon-remove" type="submit" ng-click="deleteSelectedComponent(item)"></button>
-                    </td>                    
+                    <td>{{component.name}}                 
+                    </td>            
+                    <td>{{component.componentAmount}}
+                      <button class="glyphicon glyphicon-remove" type="submit" ng-click="deleteSelectedComponent(item)"></button>
+                    </td>  
                 </tr>
             </tbody>
         </table>

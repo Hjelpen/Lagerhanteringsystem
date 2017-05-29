@@ -1,12 +1,13 @@
 ﻿(function () {
     angular.module('App')
-        .controller('articleOutBoundController', ['$scope', '$http', 'componentService', 'articleService', '$location', function ($scope, $http, componentService, articleService, $location) {
+        .controller('articleOutBoundController', ['$scope', '$http', 'componentService', 'articleService', '$location', '$timeout', function ($scope, $http, componentService, articleService, $location, $timeout) {
 
             $scope.articles = [];
 
             $scope.article = {
                 id: "",
-                amount: ""
+                amount: "",
+                comment: ""
             };
 
 
@@ -20,11 +21,24 @@
             };
 
             $scope.articleOutBounds = function () {
-                $http.put('http://localhost:45559/api/articles/putarticle?id=' + $scope.article.id + '&amount=' + $scope.article.amount)
+                $http.put('http://localhost:45559/api/articles/putarticle?id=' + $scope.article.id + '&amount=' + $scope.article.amount + '&comment=' + $scope.article.comment)
                   .then(function (response) {
-                      return response;
+                      $scope.message = "artikeln har skickats med antalet " + $scope.article.amount;
+                      startTimer();
+
+                      $scope.article.id = "",
+                      $scope.article.amount = "",
+                      $scope.article.comment = ""
+
                   });
             };
+
+            var startTimer = function () {
+                var timer = $timeout(function () {
+                    $timeout.cancel(timer);
+                    $scope.message = "";
+                }, 3000);
+            }
 
         }]);
 })();

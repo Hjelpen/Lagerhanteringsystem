@@ -9,10 +9,13 @@ namespace LagerHantering.Models
 {
     public class ArticleComponent
     {
-        public int Id { get; set; }
-        public int ComponentId { get; set; }
-        public Component Component { get; set; }
+        [Key, Column(Order = 1)]
         public int ArticleId { get; set; }
+        [Key, Column(Order = 0)]
+        public int ComponentId { get; set; }
+
+
+        public Component Component { get; set; }
         public Article Article { get; set; }
 
         public int ComponentAmount { get; set; }

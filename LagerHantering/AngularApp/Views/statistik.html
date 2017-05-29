@@ -13,12 +13,14 @@
                 <th>Artikel</th>
                 <th>Antal </th>
                 <th>Datum </th>
+                <th>Kommentar</th>
                 <th>Användare </th>
             </tr>
-            <tr ng-repeat="order in orders">
+            <tr ng-repeat="order in orders | orderBy:'createdate':true">
                 <td>{{order.article}}</td>
                 <td>{{order.amount}}</td>
                 <td>{{order.date}}</td>
+                <td>{{order.comment}}</td>
                 <td>{{order.user}}</td>
             </tr>
         </table>
@@ -32,10 +34,10 @@
                 <th>Datum </th>
                 <th>Användare </th>
             </tr>
-            <tr ng-repeat="receipt in receipts">
+            <tr ng-repeat="receipt in receipts | orderBy:'createdate':true">
                 <td>{{receipt.component}}</td>
                 <td>{{receipt.amount}}</td>
-                <td>{{receipt.date}}</td>
+                <td>{{receipt.date }}</td>
                 <td>{{receipt.user}}</td>
             </tr>
         </table>

@@ -10,6 +10,7 @@ namespace LagerHantering.Models
         public int Id { get; set; }
         public string Article { get; set; }
         public int Amount { get; set; }
+        public string Comment { get; set; }
         public DateTime Date { get; set; }
         public string User { get; set; }
     }

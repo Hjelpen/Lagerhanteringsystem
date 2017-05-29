@@ -1,7 +1,11 @@
 ﻿body {
-    font-size: 175%;
+    font-size: 24px;
     font-family: "Segoe UI", Arial, sans-serif;
     background-color: #659FA6;
+    text-shadow: none;
+}
+tbody {
+    text-shadow: none;
 }
 
 .navbar-inverse {
@@ -37,9 +41,10 @@ table a:hover {
 }
 
 table {
+    text-shadow: none;
     font-family:Arial, Helvetica, sans-serif;
-    color:#666;
-    font-size:12px;
+    color: #030303;
+    font-size:16px;
     text-shadow: 1px 1px 0px #fff;
     background:#eaebec;
     margin:20px;
@@ -87,6 +92,7 @@ table td:first-child {
     border-left: 0;
 }
 table td {
+    
     padding:18px;
     border-top: 1px solid #ffffff;
     border-bottom:1px solid #e0e0e0;
@@ -114,13 +120,43 @@ table tr:last-child td:last-child {
     -webkit-border-bottom-right-radius:3px;
     border-bottom-right-radius:3px;
 }
-table tr:hover td {
-    background: #f2f2f2;
-    background: -webkit-gradient(linear, left top, left bottom, from(#f2f2f2), to(#f0f0f0));
-    background: -moz-linear-gradient(top,  #f2f2f2,  #f0f0f0);	
-  
-  
+    table tr:hover td {
+        background: #f2f2f2;
+        background: -webkit-gradient(linear, left top, left bottom, from(#f2f2f2), to(#f0f0f0));
+        background: -moz-linear-gradient(top, #f2f2f2, #f0f0f0);
+    }
 .tab {
+    
     width: 300px;
-    height: 200px;
+    height: 125px;
 }
+.OutBound {
+    width: 310px
+}
+#editCompWrap {
+    font-size: 22px;
+}
+#läggTill {
+    
+    width: 175px;
+}
+#KorrigeraLagersaldo{
+    background-color: #FF0000;
+    width: 244px;
+    
+}
+#KorrigeraLagersaldo:hover {
+    background-color: 	#B24A4A;
+}
+
+/*#statistic1 {
+    height: 200px;
+    width: 50%;
+    float: right;
+}
+
+#statistic2 {
+    height: 200px;
+    width: 100%;
+
+}*/

@@ -2,10 +2,11 @@
 <html>
 <head>
     <title></title>
-	<meta charset="utf-8" />
+    <meta charset="utf-8" />
 </head>
 <body>
-    <div id="statistic1" ng-controller="statisticController" ng-init="getAllOrders()">
+    <div class="row">
+    <div id="statistic1" class="col-md-6" ng-controller="statisticController" ng-init="getAllOrders()">
         <h1>Utleveranser</h1>
         <table border="1">
             <tr>
@@ -21,8 +22,8 @@
                 <td>{{order.user}}</td>
             </tr>
         </table>
-        </div>
-    <div id="statistic2" ng-controller="statisticController" ng-init="getAllReceipts()">
+    </div>
+    <div id="statistic2" class="col-md-6" ng-controller="statisticController" ng-init="getAllReceipts()">
         <h2>Inleveranser</h2>
         <table border="1">
             <tr>
@@ -38,7 +39,7 @@
                 <td>{{receipt.user}}</td>
             </tr>
         </table>
-        </div>
-
+    </div>
+    </div>
 </body>
 </html>

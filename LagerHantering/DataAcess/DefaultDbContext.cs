@@ -21,9 +21,7 @@ namespace LagerHantering.DataAcess
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            //modelBuilder.Entity<Component>()
-            //            .HasMany<Article>(s => s.Articles)
-            //            .WithMany(c => c.Components)
+            //modelBuilder.Entity<ArticleComponent>()
             //            .Map(cs =>
             //            {
             //                cs.MapLeftKey("ComponentId");

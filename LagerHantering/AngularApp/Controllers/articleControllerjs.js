@@ -12,7 +12,7 @@
                 {
                     component: $scope.selectedOption,
                     componentamount: ""
-                };
+                }
 
             //sparar artikelns namn och listan med valda komponenter
             $scope.article = {

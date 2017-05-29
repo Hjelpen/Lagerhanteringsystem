@@ -46,7 +46,7 @@ namespace LagerHantering.API
 
         // PUT: api/Articles/5
         [ResponseType(typeof(void))]
-        public IHttpActionResult PutArticle(int id, int amount)
+        public IHttpActionResult PutArticle(int id, int amount, string comment)
         {
 
 
@@ -78,7 +78,7 @@ namespace LagerHantering.API
             try
             {
                 var user = GetCurrentUser();
-                var order = new Order { Amount = amount, Article = article.Name, Date = DateTime.Now, User = user };
+                var order = new Order { Amount = amount, Article = article.Name, Comment = comment, Date = DateTime.Now, User = user };
                 db.Orders.Add(order);
                 db.SaveChanges();
             }

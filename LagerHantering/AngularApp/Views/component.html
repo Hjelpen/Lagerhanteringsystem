@@ -11,7 +11,7 @@
                 <input type="text" class="form-control" placeholder="Komponent namn" data-ng-model="component.Name" />
                 <input type="text" class="form-control" placeholder="Artikelnummer" data-ng-model="component.ArticleNumber" />
                 <input type="text" class="form-control" placeholder="Beställningstid" data-ng-model="component.OrderTime" />
-                <input type="text" class="form-control" placeholder="Antal" data-ng-model="component.Amount" />
+                <input type="text" class="form-control" placeholder="Antal i lager" data-ng-model="component.Amount" />
                 <input type="text" class="form-control" placeholder="Pris" data-ng-model="component.Price" />
                 <button class="btn btn-lg btn-info btn-block" type="submit" data-ng-click="saveComponent()">Spara</button>
                 <hr />
@@ -22,7 +22,7 @@
                             <th>Artikelnummer</th>
                             <th>Namn</th>
                             <th>Ledtid</th>
-                            <th>Antal</th>
+                            <th>Antal i lager</th>
                             <th>StyckPris</th>
                             <th>Totalt pris</th>
                             <th>Redigera</th>
@@ -43,7 +43,23 @@
                         </tr>
                     </tbody>
                 </table>
-                {{totalprice}}
+
+
+                <table id="comptable" />
+                <table cellspacing='0'>
+                    <thead>
+                        <tr>
+                            <th>Totala Lagersaldot</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>{{totalprice}} Kronor</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+
             </div>
         </div>
     </form>

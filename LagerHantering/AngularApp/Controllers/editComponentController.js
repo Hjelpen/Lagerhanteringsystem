@@ -52,7 +52,7 @@
                 if (confirm("Vill du ta bort komponenten" + " " + $scope.id)) {
                     $http({
                         method: 'DELETE',
-                        url: 'http://localhost:45559/api/Components/' + $scope.id,
+                        url: 'http://localhost:45559/api/Components/DeleteComponent/' + $scope.id,
                     }).then(function successCallback(response) {
                         $location.path('/component');
                     }, function errorCallback(response) {

@@ -14,7 +14,7 @@
            
         </select> 
        <input type="number" min="1" ng-model="articleComponents.componentamount" />     
-        <button class="btn btn-lg btn-info btn-block" type="submit" data-ng-click="saveComponent()">Lägg till komponent i lista</button> 
+        <button class="btn btn-lg btn-info btn-block" type="submit" ng-click="saveComponent(item1)">Lägg till komponent i lista</button> 
         <table>
             <thead>
                 <tr>
@@ -23,12 +23,12 @@
                 </tr>
             </thead>
             <tbody>
-                <tr ng-repeat="component in selectedComponents track by $index">
+                <tr ng-model="selectditem" ng-repeat="component in selectedComponents">
                     <td hidden="hidden">{{component.id}}</td>
                     <td>{{component.name}}                 
                     </td>            
                     <td>{{component.componentAmount}}
-                      <button class="glyphicon glyphicon-remove" type="submit" ng-click="deleteSelectedComponent(item)"></button>
+                      <button class="glyphicon glyphicon-remove" type="submit" ng-click="deleteSelectedComponent(component)"></button>
                     </td>  
                 </tr>
             </tbody>

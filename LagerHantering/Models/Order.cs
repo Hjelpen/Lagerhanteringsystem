@@ -13,5 +13,7 @@ namespace LagerHantering.Models
         public string Comment { get; set; }
         public DateTime Date { get; set; }
         public string User { get; set; }
+
+        public bool InvoiceSent { get; set; }
     }
 }

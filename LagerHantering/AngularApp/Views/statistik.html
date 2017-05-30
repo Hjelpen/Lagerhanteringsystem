@@ -15,6 +15,7 @@
                 <th>Datum </th>
                 <th>Kommentar</th>
                 <th>Användare </th>
+                <th>Fakturerad</th>
             </tr>
             <tr ng-repeat="order in orders | orderBy:'createdate':true">
                 <td>{{order.article}}</td>
@@ -22,6 +23,7 @@
                 <td>{{order.date}}</td>
                 <td>{{order.comment}}</td>
                 <td>{{order.user}}</td>
+                <td>{{}} <input type="checkbox" ng-model="statistic.invoiceSent"></td>
             </tr>
         </table>
     </div>

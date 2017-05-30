@@ -8,7 +8,7 @@
            //Skickar component objekten som kommer in från componentController vidare till ComponentsController API,
            //sparar en ny komponent i databasen.
            var _addComponent = function (component) {
-               return $http.post('http://localhost:45559/api/Components', component)
+               return $http.post('http://localhost:45559/api/Components/PostComponent', component)
                    .then(function (response) {
                        return response;
                    });
@@ -16,7 +16,7 @@
 
            //Kör en get till ComponentsController API för att hämta alla komponenter som finns i databasen.
            var _getComponents = function () {
-               return $http.get('http://localhost:45559/api/Components')
+               return $http.get('http://localhost:45559/api/Components/GetComponents')
                    .then(function (response) {
                        return response;
                    });

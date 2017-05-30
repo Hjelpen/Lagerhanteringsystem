@@ -21,32 +21,53 @@ namespace LagerHantering.API
         DefaultDbContext db = new DefaultDbContext();
         private UserRepository _repo = new UserRepository();
 
+        // GET: api/Articles/5
+     //   [Route("api/Articles/GetArticle/:id")]
+        [ResponseType(typeof(Article))]
+        public IHttpActionResult GetArticle(int id)
+        {
+            var article = db.Articles.Where(x => x.Id == id).FirstOrDefault();
+            return Ok(article);
+        }
+
         // GET: api/Articles
         public dynamic GetArticles()
         {
             return db.Articles.ToList();
         }
 
+
         // GET: api/Articles/5
         [ResponseType(typeof(Article))]
-        public IHttpActionResult GetArticle(int id)
+        public IHttpActionResult GetComponentsByArticle(int id)
         {
-            var articlecomponents = db.ArticleComponent
+            var components = db.ArticleComponent
                 .Where(ac => ac.ArticleId == id)
                 .Select(ac => ac.Component)
-                .ToList();     
-            
-            if (articlecomponents == null)
+                .ToList();
+
+            var articleComponents = db.ArticleComponent
+              .Where(ac => ac.ArticleId == id)
+              .ToList();
+
+            foreach (var component in components)
+            {
+                var articleComponent = articleComponents.Where(x => x.ComponentId == component.Id).FirstOrDefault();
+                var amount = articleComponent.ComponentAmount;
+                component.ComponentAmount = amount;
+            }
+
+            if (components == null)
             {
                 return NotFound();
             }
 
-            return Ok(articlecomponents);
+            return Ok(components);
         }
 
         // PUT: api/Articles/5
         [ResponseType(typeof(void))]
-        public IHttpActionResult PutArticle(int id, int amount, string comment)
+        public IHttpActionResult PutArticle(int id, int amount, string comment, bool invoiceSent)
         {
 
 
@@ -78,7 +99,7 @@ namespace LagerHantering.API
             try
             {
                 var user = GetCurrentUser();
-                var order = new Order { Amount = amount, Article = article.Name, Comment = comment, Date = DateTime.Now, User = user };
+                var order = new Order { Amount = amount, Article = article.Name, Comment = comment, Date = DateTime.Now, User = user, InvoiceSent = invoiceSent};
                 db.Orders.Add(order);
                 db.SaveChanges();
             }

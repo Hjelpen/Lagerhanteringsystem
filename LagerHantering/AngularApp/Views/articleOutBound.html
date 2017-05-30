@@ -4,7 +4,6 @@
     <title></title>
 </head>
 <body>
-<form>
     <div class="OutBound">
     <div id="controllerDiv" ng-controller="articleOutBoundController" ng-init="getallArticles()">
         <h1>Utleverans</h1>
@@ -22,10 +21,13 @@
                 <label for="comment">Kommentar:</label>
                 <textarea class="form-control" rows="5" id="comment" ng-model="article.comment"></textarea>
             </div>
+
+            <input type="checkbox" ng-model="article.invoiceSent"> Fakturerad
               
         </form>
             <button class="btn btn-lg btn-info btn-block" type="submit" ng-click="articleOutBounds()">Utleverans!</button>
             {{message}}
+        </div>
 </div>
 </body>
 </html>

@@ -9,23 +9,21 @@
 
             $scope.getAllOrders = function () {
                 statisticService.getOrders().then(function (response) {
-
                     $scope.orders = response.data
-
-                    angular.forEach($scope.orders, function () {
-                        if ($scope.orders.invoicesent == true) {
-                            $scope.statistic.invoicesent = true
-                        }
-                        else {
-                            $scope.statistic.invoicesent = false
-                        }
-                        
-                    })
-                },
-                 function (response) {
-                     (response)
-                 });
+                });
             };
+
+
+
+            $scope.changeinvoiceSent = function (id) {
+                $http.post('http://localhost:45559/api/Statistic/UpdateInvoice?id=' + id)
+                    .then(function (response) {
+                        $scope.getAllOrders();
+                    })
+            };
+            
+           
+
 
             $scope.getAllReceipts = function () {
                 statisticService.getReceipt().then(function (response) {
@@ -40,3 +38,4 @@
 
         }]);
 })();
+

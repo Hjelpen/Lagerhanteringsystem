@@ -45,12 +45,12 @@ table a:hover {
 
 table {
     text-shadow: none;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: "Segoe UI", Arial, sans-serif;
     color: #030303;
     font-size: 16px;
     text-shadow: 1px 1px 0px #fff;
     background: #eaebec;
-    margin: 20px;
+    margin: 0px;
     border: #ccc 1px solid;
     -moz-border-radius: 3px;
     -webkit-border-radius: 3px;
@@ -61,7 +61,10 @@ table {
 }
 
     table th {
-        padding: 21px 25px 22px 25px;
+        /*padding: 21px 25px 22px 25px;*/
+        padding-top: 15px;
+        padding-bottom: 15px;
+        padding-right: 7px;
         border-top: 1px solid #fafafa;
         border-bottom: 1px solid #e0e0e0;
         background: #ededed;
@@ -163,22 +166,30 @@ table {
     }
 
 #statistic1 {
-    padding: 5px;
-    
+    /*float: right;*/
 }
 
-#statistic2 { padding: 5px; }
+
+h1 {
+    margin-bottom: 20px;
+}
+
+
+
+#statistic2 {
+    /*float: right;*/
+}
 
 table {
-    font-size: 15px;
-    position: relative;
-    width: 90%;
-    background-color: #532256;
+    font-size: 16px;
+    background-color: #ffffff;
 }
 
 
 
-/*@media (min-width: 768px){
+/*@media (max-width: 768px) {
 
-    .container { width: 900px; }
+    .row {
+        width: 900px;
+    }
 }*/

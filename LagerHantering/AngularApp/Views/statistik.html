@@ -1,36 +1,40 @@
-﻿<!DOCTYPE html>
+﻿
+<!DOCTYPE html>
 <html>
 <head>
     <title></title>
     <meta charset="utf-8" />
 </head>
 <body>
-<<<<<<< HEAD
-    <div class="row">
-    <div id="statistic1" class="col-md-6" ng-controller="statisticController" ng-init="getAllOrders()">
+
+    <div id="statistic1" class="col-md-8">
+
         <h1>Utleveranser</h1>
-        <table border="1">
+        <table ng-controller="statisticController" ng-init="getAllOrders()">
             <tr>
                 <th>Artikel</th>
                 <th>Antal </th>
                 <th>Datum </th>
                 <th>Kommentar</th>
                 <th>Användare </th>
-                <th>Fakturerad</th>
+                <th>fakturerad</th>
             </tr>
             <tr ng-repeat="order in orders | orderBy:'createdate':true">
+                <td hidden="hidden">{{order.id}}</td>
                 <td>{{order.article}}</td>
                 <td>{{order.amount}}</td>
-                <td>{{order.date}}</td>
+                <td>{{order.date | date: "yyyy/MM/dd"}}</td>
                 <td>{{order.comment}}</td>
                 <td>{{order.user}}</td>
-                <td>{{}} <input type="checkbox" ng-model="statistic.invoiceSent"></td>
+                <td>
+                    <input type="checkbox" value="InvoiceSent" ng-model="order.invoiceSent" ng-change='changeinvoiceSent(order.id)' ng-checked="order.invoiceSent == true">
+                </td> 
             </tr>
         </table>
     </div>
-    <div id="statistic2" class="col-md-6" ng-controller="statisticController" ng-init="getAllReceipts()">
-        <h2>Inleveranser</h2>
-        <table border="1">
+    <div id="statistic2" class="col-md-4">
+        <h1>Inleveranser</h1>
+        <table ng-controller="statisticController" ng-init="getAllReceipts()">
             <tr>
                 <th>Komponent</th>
                 <th>Antal </th>
@@ -40,59 +44,11 @@
             <tr ng-repeat="receipt in receipts | orderBy:'createdate':true">
                 <td>{{receipt.component}}</td>
                 <td>{{receipt.amount}}</td>
-                <td>{{receipt.date }}</td>
+                <td>{{receipt.date | date: "yyyy/MM/dd" }}</td>
                 <td>{{receipt.user}}</td>
             </tr>
         </table>
     </div>
-    </div>
-=======
-    <div  class="row">
-       
-            <div id="statistic2" class="col-md-6 col-xs-12">
 
-              
-
-                    <h1>Utleveranser</h1>
-                    <table border="1" class="table-responsive" ng-controller="statisticController" ng-init="getAllOrders()">
-                        <tr>
-                            <th>Artikel</th>
-                            <th>Antal </th>
-                            <th>Datum </th>
-                            <th>Kommentar</th>
-                            <th>Användare </th>
-                        </tr>
-                        <tr ng-repeat="order in orders | orderBy:'createdate':true">
-                            <td>{{order.article}}</td>
-                            <td>{{order.amount}}</td>
-                            <td>{{order.date | date: "yyyy/mm/dd"}}</td>
-                            <td>{{order.comment}}</td>
-                            <td>{{order.user}}</td>
-                        </tr>
-                    </table>
-                </div>
-            
-            <div id="statistic1" class="col-md-6 col-xs-12">
-              
-                    <h1>Inleveranser</h1>
-                    <table border="1" class="table-responsive" ng-controller="statisticController" ng-init="getAllReceipts()">
-                        <tr>
-                            <th>Komponent</th>
-                            <th>Antal </th>
-                            <th>Datum </th>
-                            <th>Användare </th>
-                        </tr>
-                        <tr ng-repeat="receipt in receipts | orderBy:'createdate':true">
-                            <td>{{receipt.component}}</td>
-                            <td>{{receipt.amount}}</td>
-                            <td>{{receipt.date | date: "yyyy/mm/dd" }}</td>
-                            <td>{{receipt.user}}</td>
-                        </tr>
-                    </table>
-                </div>
-            </div>
-       
-   
->>>>>>> 1b1c92d4c4061d51f148c375b378e3bae33f6834
 </body>
 </html>

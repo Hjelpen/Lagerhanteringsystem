@@ -1,8 +1,7 @@
 ﻿using LagerHantering.DataAcess;
-using System;
-using System.Collections.Generic;
+using LagerHantering.Models;
 using System.Linq;
-using System.Web;
+using System.Net;
 using System.Web.Http;
 
 namespace LagerHantering.API
@@ -23,6 +22,34 @@ namespace LagerHantering.API
             return db.Receipts.ToList();
         }
 
+
+        [Route("api/Statistic/UpdateInvoice")]
+        public dynamic UpdateInvoice(int id)
+        {
+
+            Order order = db.Orders.Find(id);
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+            if (id != order.Id)
+            {
+                return BadRequest();
+            }
+            if (order.InvoiceSent == true)
+            {
+                order.InvoiceSent = false;
+            }
+            else
+            {
+                order.InvoiceSent = true;
+            }
+
+            db.Entry(order).State = System.Data.Entity.EntityState.Modified;
+            db.SaveChanges();
+
+            return StatusCode(HttpStatusCode.NoContent);
+        }
 
     }
 }

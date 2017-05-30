@@ -49,7 +49,7 @@
 
             //Tar bort komponent, skickar objektets id till controllern api som tar bort den från databasen.
             $scope.deleteComponent = function () {
-                if (confirm("Vill du ta bort komponenten" + " " + $scope.id)) {
+                if (confirm("Vill du ta bort komponenten nr " + $scope.id + " ?")) {
                     $http({
                         method: 'DELETE',
                         url: 'http://localhost:45559/api/Components/DeleteComponent/' + $scope.id,

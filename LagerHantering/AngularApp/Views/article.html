@@ -2,53 +2,70 @@
 <html>
 <head>
     <title></title>
-	<meta charset="utf-8" />
+    <meta charset="utf-8" />
 </head>
 <body>
-   <div ng-controller="articleController" ng-init="getAllComponents()">
-       Artikelnamn: <input type="text" class="form-control" data-ng-model="article.Name" />
+    <form class="form-horizontal">
+        <fieldset>
+            <legend>Artiklar</legend>
+            <div ng-controller="articleController" ng-init="getAllComponents()">
 
-       <h1>Välj komponenter till artikeln</h1>
 
-        <select class="form-control" ng-model="selectedOption" ng-options="v.name for v in components ">
-           
-        </select> 
-       <input type="number" min="1" ng-model="articleComponents.componentamount" />     
-        <button class="btn btn-lg btn-info btn-block" type="submit" ng-click="saveComponent(item1)">Lägg till komponent i lista</button> 
-        <table>
-            <thead>
-                <tr>
-                    <th>Komponenter</th>
-                    <th>Antal i artikeln</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr ng-model="selectditem" ng-repeat="component in selectedComponents">
-                    <td hidden="hidden">{{component.id}}</td>
-                    <td>{{component.name}}                 
-                    </td>            
-                    <td>{{component.componentAmount}}
-                      <button class="glyphicon glyphicon-remove" type="submit" ng-click="deleteSelectedComponent(component)"></button>
-                    </td>  
-                </tr>
-            </tbody>
-        </table>
-        <button class="btn btn-lg btn-info btn-block" type="submit" ng-click="saveArticle()">Spara artikel</button>
-       <div ng-init="getAllArticles()">
-           <br />
-           <hr />
-           <h2>Artiklar</h2>
-           <table>
-               <tr ng-repeat="article in articles">
-                   <td hidden="hidden">{{article.Id}}</td>
-                   <td>
-                       {{article.name}}
-                       <a class="glyphicon glyphicon-edit" ng-href="#/articleEdit/{{article.id}}"></a>
-                   </td>
-               </tr>
-           </table>
-           <br />
-       </div>
-    </div>
+
+                <div class="form-group">
+                    <label for="textInput" class="col-lg-2 control-label">Artikelnamn:</label>
+                    <div class="col-lg-10">
+                        <input type="text" class="form-control" id="textInput" ng-model="article.Name">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="select" class="col-lg-2 control-label">Komponenter</label>
+                    <div class="col-lg-10">
+                        <select id="select" class="form-control" ng-model="selectedOption" ng-options="v.name for v in components "></select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="number" class="col-lg-2 control-label">Antal</label>
+                    <div class="col-lg-10">
+                        <input id="number" type="number" min="1" ng-model="articleComponents.componentamount" />
+                    </div>
+
+                    <!--<button class="btn btn-lg btn-info btn-block" type="submit" ng-click="saveComponent(item1)">Lägg till komponent i lista</button>-->
+                    <div class="form-group">
+                        <div class="col-lg-10 col-lg-offset-2">
+                            <button type="submit" ng-click="saveComponent(item1)" class="btn btn-primary">Lägg komponent i lista </button>
+                        </div>
+                    </div>
+                    <ul class="list-group">
+
+                        <li ng-model="selectditem" ng-repeat="component in selectedComponents">
+                            {{component.name}}
+                            {{component.componentAmount}}
+                            <button class="glyphicon glyphicon-remove" type="submit" ng-click="deleteSelectedComponent(component)"></button>
+                        </li>
+                    </ul> <div class="form-group">
+                        <div class="col-lg-10 col-lg-offset-2">
+                            <button type="submit" ng-click="saveArticle()" class="btn btn-primary">Spara artikel </button>
+                        </div> <div ng-init="getAllArticles()">
+                            <br />
+                            <hr />
+                            <h1>Artiklar</h1>
+                            <table>
+                                <tr ng-repeat="article in articles">
+                                    <td hidden="hidden">{{article.Id}}</td>
+                                    <td>
+                                        {{article.name}}
+                                        <a class="glyphicon glyphicon-edit" ng-href="#/articleEdit/{{article.id}}"></a>
+                                    </td>
+                                </tr>
+                            </table>
+                            <br />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </fieldset>
+    </form>
 </body>
 </html>

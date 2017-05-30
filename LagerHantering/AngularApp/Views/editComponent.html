@@ -15,8 +15,12 @@
                     <th>Antal</th>
                     <th>Pris</th>
                     <th>Inmatning</th>
+                    <th>Ta Bort komponent</th>
+
                 </tr>
+
             </thead>
+
             <tbody>
                 <tr>
                     <td hidden="hidden">{{component.id}}</td>
@@ -27,19 +31,23 @@
                     <td>{{component.price}} </td>
 
                     <td><input type="number" ng-model="Update.amount" /></td>
+                    <td><button id="taBortKomponent" class="glyphicon glyphicon-trash" type="submit" ng-click="deleteComponent(id)"></button></td>
                 </tr>
             </tbody>
         </table>
         <!--<button class="btn btn-lg btn-info btn-block" type="submit" ng-click="updateInvFunction()">Korrigera Lagersaldo</button>-->
         <button id="läggTill" class="btn btn-lg btn-info btn-block" type="submit" ng-click="addComponentAmount()">Lägg tills</button>
-        <button class="glyphicon glyphicon-trash" type="submit" ng-click="deleteComponent(id)"></button>
+
+        <a id="editCompBackButton" href="#/component" class="btn btn-lg btn-info btn-block">Tillbaka</a>
+    </div>
+
+    <div id="korrigeraLagerSadldo">
+
         <button id="KorrigeraLagersaldo" class="btn btn-lg btn-info btn-block" type="submit" ng-click="updateInvFunction()">Korrigera Lagersaldo</button>
     </div>
 
-    
-        
 
-<a href="#/component" class="btn btn-lg btn-info btn-block">Tillbaka</a>
+
 
 </body>
 </html>

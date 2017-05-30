@@ -66,7 +66,8 @@
                 articleService.addArticle($scope.article).then(function (response) {
                     $scope.selectedComponents.length = 0,
                     $scope.article.Name = "",
-                    $scope.getAllArticles();               
+                    $scope.getAllArticles();
+                    $scope.getAllComponents();
                 })
             };
                         

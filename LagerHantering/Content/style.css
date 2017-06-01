@@ -175,10 +175,24 @@ table {
     background-color: #ffffff;
 }
 
+#dashedBorder {
+    padding-left: 900px;
+}
+
 #KorrigeraLagersaldo {
     float: right;
 }
 
+
 #editCompBackButton {
     width: 175px;
+}
+#varningKorrigering {
+    position: fixed;
+    bottom: 0;
+    margin-left: auto;
+    margin-right: auto; 
+}
+.close {
+    visibility: hidden;
 }

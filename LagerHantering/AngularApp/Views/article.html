@@ -18,6 +18,10 @@
                         <input type="text" class="form-control" id="textInput" ng-model="article.Name">
                     </div>
                 </div>
+
+
+                <!--<select class="form-control" ng-model="selectedOption" ng-options="v.name for v in components "></select>-->
+
                 <div class="form-group">
                     <label for="select" class="col-lg-2 control-label">Komponenter</label>
                     <div class="col-lg-10">
@@ -44,10 +48,16 @@
                             {{component.componentAmount}}
                             <button class="glyphicon glyphicon-remove" type="submit" ng-click="deleteSelectedComponent(component)"></button>
                         </li>
-                    </ul> <div class="form-group">
+                    </ul>
+
+
+                    <div class="form-group">
                         <div class="col-lg-10 col-lg-offset-2">
                             <button type="submit" ng-click="saveArticle()" class="btn btn-primary">Spara artikel </button>
-                        </div> <div ng-init="getAllArticles()">
+                        </div>
+
+
+                        <div ng-init="getAllArticles()">
                             <br />
                             <hr />
                             <h1>Artiklar</h1>

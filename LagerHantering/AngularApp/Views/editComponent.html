@@ -36,16 +36,28 @@
             </tbody>
         </table>
         <!--<button class="btn btn-lg btn-info btn-block" type="submit" ng-click="updateInvFunction()">Korrigera Lagersaldo</button>-->
-        <button id="läggTill" class="btn btn-lg btn-info btn-block" type="submit" ng-click="addComponentAmount()">Lägg tills</button>
+        <button id="läggTill" class="btn btn-lg btn-info btn-block" type="submit" ng-click="addComponentAmount()">Lägg till</button>
 
         <a id="editCompBackButton" href="#/component" class="btn btn-lg btn-info btn-block">Tillbaka</a>
+        <div id="korrigeraLagerSadldo">
+
+            <button id="KorrigeraLagersaldo" class="btn btn-lg btn-info btn-block" type="submit" ng-click="updateInvFunction()">Korrigera Lagersaldo</button>
+
+        </div>
     </div>
 
-    <div id="korrigeraLagerSadldo">
 
-        <button id="KorrigeraLagersaldo" class="btn btn-lg btn-info btn-block" type="submit" ng-click="updateInvFunction()">Korrigera Lagersaldo</button>
+
+
+
+    <div id="varningKorrigering" class="alert alert-dismissible alert-warning">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        <h4>OBSERVERA!</h4>
+        <p>
+            Varning, när du använder korrigera lagersaldo går det inte att backa din åtgärd.<br />
+            Använd endast korrigera lagersadlo när lagret inte stämmer
+        </p>
     </div>
-
 
 
 

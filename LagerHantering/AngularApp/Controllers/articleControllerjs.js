@@ -31,7 +31,7 @@
                     $scope.selectedOption = $scope.components[0];
                 },
                  function (response) {
-                     (response)
+                     
                  });
             };
 
@@ -63,11 +63,29 @@
 
             //sparar artiklen, skickar den vidare till funktionen addArticle i articleService.js. Sen rensar scope article och selectedComponents
             $scope.saveArticle = function () {
+
+                if ($scope.article.Name.length == 0) {
+                    toastr.error('Ange ett artikelnamn');
+                    return;
+                    
+                }
+
+                if ($scope.selectedComponents.length == 0) {
+                    toastr.error('Du måste lägga till minst 1st komponent(er)');
+                    return;
+
+                }
+
+
                 articleService.addArticle($scope.article).then(function (response) {
                     $scope.selectedComponents.length = 0,
                     $scope.article.Name = "",
                     $scope.getAllArticles();
-                    $scope.getAllComponents();
+                    $scope.getAllComponents()
+                    
+                    if (response.statusText == "Created") {
+                        toastr.success('Artikel skapad!')
+                    }
                 })
             };
                         

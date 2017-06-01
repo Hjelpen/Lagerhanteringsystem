@@ -16,6 +16,7 @@
     <link href="Content/bootstrap-theme.min.css" rel="stylesheet" />
     <link href="Content/bootstrap.min.css" rel="stylesheet" />
     <link href="Content/style.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
 
 
 
@@ -73,8 +74,15 @@
     </div>
     <div class="container">
         <div data-ng-view="">
+            
+            <script>
+                $( document ).ready(function() {
+                    //toastr.info('Are you the 6 fingered man?')
+                });
+
+            </script>
         </div>
     </div>
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
 </body>
 </html>

@@ -11,6 +11,7 @@
                 invoiceSent: false
             };
 
+            $scope.article.amount = 1;
 
             var select = $scope.selectedArticle;
 
@@ -24,13 +25,27 @@
             $scope.articleOutBounds = function () {
                 $http.put('http://localhost:45559/api/articles/putarticle?id=' + $scope.article.id + '&amount=' + $scope.article.amount + '&comment=' + $scope.article.comment + '&invoiceSent=' + $scope.article.invoiceSent)
                   .then(function (response) {
-                      $scope.message = "artikeln har skickats med antalet " + $scope.article.amount;
-                      startTimer();
-
+           
+                      toastr.success('Leverans skickad!');
                       $scope.article.id = ""
                       $scope.article.amount = ""
                       $scope.article.comment = ""
                       $scope.article.invoiceSent = false;
+                      $scope.article.amount = 1;
+
+                      startTimer();
+
+                  }, function errorCallback(response) {
+                     
+                      if ($scope.article.id == 0)
+                      {
+                          toastr.error('Välj en artikel');
+                      }
+                      else
+                      {
+                          toastr.error('Det finns inte tillräckligt med komponenter på lagret för denna utleverans');
+                      }
+                       
                   });
             };
 

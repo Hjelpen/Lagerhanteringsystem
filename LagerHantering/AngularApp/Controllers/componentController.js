@@ -16,9 +16,6 @@
 
             $scope.totalprice = 0
                
-
-            
-
            
             //Tar in användarens input från scope.component och skickar den vidare till componentService och funktionen addComponent
             //sen kallar på getAllComponents för att ladda om listan med alla komponenter.
@@ -26,6 +23,7 @@
                 componentService.addComponent($scope.component).then(function (response) {
                     $scope.component = undefined;
                     $scope.getAllComponents();
+                    toastr.success('Komponent sparad')
                 },
                    function (response) {
                        (response)

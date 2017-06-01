@@ -18,6 +18,7 @@
             $scope.changeinvoiceSent = function (id) {
                 $http.post('http://localhost:45559/api/Statistic/UpdateInvoice?id=' + id)
                     .then(function (response) {
+                        toastr.success('Fakturering uppdaterad!');
                         $scope.getAllOrders();
                     })
             };

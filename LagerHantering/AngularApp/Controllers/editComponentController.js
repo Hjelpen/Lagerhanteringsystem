@@ -29,9 +29,11 @@
                 if (confirm("Vill du ändra antalet komponenter på " + $scope.component.name + " till " + $scope.Update.amount)) {
                     $http.put('http://localhost:45559/api/components/editcomponent?id=' + $scope.id + '&amount=' + $scope.Update.amount)
                     .then(function (response) {
+                        toastr.success("Lagerstatus på " + $scope.component.name + " ändrad till " + $scope.Update.amount);
                         $scope.editComponent();
-                        $scope.Update.amount = "";
-                        return response;
+                        $scope.Update.amount = "";                     
+                    }, function errorCallback(response) {                
+                        toastr.error('Ange ett antal att skicka in');                                             
                     });
                 }};
 
@@ -40,9 +42,13 @@
                 if (confirm("Vill du lägga till antalet " + $scope.Update.amount + " till komponenten " + $scope.component.name)) {
                     $http.put('http://localhost:45559/api/components/AddAmountComponent?id=' + $scope.id + '&amount=' + $scope.Update.amount)
                      .then(function (response) {
+
+                         toastr.success($scope.Update.amount + " har lagts till på " + $scope.component.name);
                          $scope.editComponent();
                          $scope.Update.amount = "";
-                         return response;
+
+                     }, function errorCallback(response) {                
+                             toastr.error('Ange ett antal att skicka in');                           
                      });
                 }
             };

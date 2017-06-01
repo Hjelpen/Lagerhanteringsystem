@@ -253,3 +253,4 @@ paket-files/
 AngularJS.Journey.Skolprojekt/Web.config
 *.pdf
 LagerHantering/Web.config
+LagerHantering/AngularApp/Views/component.html

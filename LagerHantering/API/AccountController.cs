@@ -7,6 +7,7 @@ using System.Web.Http;
 namespace LagerHantering.API
 {
     [RoutePrefix("api/Account")]
+    [Authorize]
     public class AccountController : ApiController
     {
         private UserRepository _repo = null;
@@ -16,7 +17,7 @@ namespace LagerHantering.API
             _repo = new UserRepository();
         }
 
-       // [Authorize(Roles = "Admin")]
+        [Authorize]
         [Route("Register")]
         public async Task<IHttpActionResult> Register(User userModel)
         {

@@ -14,6 +14,7 @@ using System;
 
 namespace LagerHantering.API
 {
+    [Authorize]
     public class ComponentsController : ApiController
     {
         DefaultDbContext db = new DefaultDbContext();
@@ -77,6 +78,67 @@ namespace LagerHantering.API
                 }
             }
         }
+
+
+        [HttpPut]
+        public dynamic UpdateComponent(int id, int? OrderTime, decimal? price, string name, string articlenumber)
+        {
+
+            Component component = db.Components.Where(x => x.Id == id).FirstOrDefault();
+
+            if (!string.IsNullOrEmpty(name))
+            {
+                component.Name = name;
+            }
+
+            if (!string.IsNullOrEmpty(articlenumber))
+            {
+                component.ArticleNumber = articlenumber;
+            }
+           
+            if (OrderTime.HasValue && OrderTime > 0)
+            {
+                component.OrderTime = OrderTime;
+            }
+            
+            if (price.HasValue && price > 0)
+            {
+                component.Price = price;
+            }
+
+
+            db.Entry(component).State = EntityState.Modified;
+
+            try
+            {
+
+                db.SaveChanges();
+                return new
+                {
+                    Success = true,
+                    Component = component
+                };
+
+            }
+
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!ComponentExists(id))
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    return new
+                    {
+                        Success = false,
+                        Component = component
+                    };
+
+                }
+            }
+        }
+
 
         [HttpPut]
         [Route("api/Components/AddAmountComponent")]

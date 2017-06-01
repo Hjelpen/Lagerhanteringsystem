@@ -6,6 +6,7 @@ using System.Web.Http;
 
 namespace LagerHantering.API
 {
+    [Authorize]
     public class StatisticController : ApiController
     {         
         DefaultDbContext db = new DefaultDbContext();

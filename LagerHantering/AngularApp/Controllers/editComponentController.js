@@ -16,6 +16,7 @@
             $scope.editComponent = function () {
                 componentService.getComponent($scope.id).then(function (response) {
                     $scope.component = response.data
+                    console.log(response)
                 });
             };
 
@@ -24,6 +25,16 @@
                 amount: ""
             }
 
+            $scope.updatecomponent = {
+                orderTime: "",
+                price: "",
+                name: "",
+                articleNumber: ""
+            }
+
+            $scope.Update.amount = 1;
+
+
             //ändrar hela antalet på en komponent
             $scope.updateInvFunction = function () {
                 if (confirm("Vill du ändra antalet komponenter på " + $scope.component.name + " till " + $scope.Update.amount)) {
@@ -31,7 +42,7 @@
                     .then(function (response) {
                         toastr.success("Lagerstatus på " + $scope.component.name + " ändrad till " + $scope.Update.amount);
                         $scope.editComponent();
-                        $scope.Update.amount = "";                     
+                        $scope.Update.amount = 1;                     
                     }, function errorCallback(response) {                
                         toastr.error('Ange ett antal att skicka in');                                             
                     });
@@ -45,7 +56,7 @@
 
                          toastr.success($scope.Update.amount + " har lagts till på " + $scope.component.name);
                          $scope.editComponent();
-                         $scope.Update.amount = "";
+                         $scope.Update.amount = 1;
 
                      }, function errorCallback(response) {                
                              toastr.error('Ange ett antal att skicka in');                           
@@ -55,7 +66,7 @@
 
             //Tar bort komponent, skickar objektets id till controllern api som tar bort den från databasen.
             $scope.deleteComponent = function () {
-                if (confirm("Vill du ta bort komponenten nr " + $scope.id + " ?")) {
+                if (confirm("Vill du ta bort komponenten " + $scope.component.name + " ?")) {
                     $http({
                         method: 'DELETE',
                         url: 'http://localhost:45559/api/Components/DeleteComponent/' + $scope.id,
@@ -65,6 +76,26 @@
                         alert("Error : " + response.data.ExceptionMessage);
                     });
                 }
+            };
+
+
+           //Uppdaterar komponent
+            $scope.updateComponent = function () {
+
+                $http.put('http://localhost:45559/api/components/UpdateComponent?id=' + $scope.id
+                    + '&ordertime=' + $scope.updatecomponent.orderTime
+                    + '&price=' + $scope.updatecomponent.price
+                    + '&name=' + $scope.updatecomponent.name
+                    + '&articlenumber=' + $scope.updatecomponent.articleNumber )
+                    .then(function (response) {
+                        toastr.success("Komponent ändrad");
+
+                        console.log($scope.updatecomponent.orderTime)
+
+                        $scope.editComponent();
+                    }, function errorCallback(response) {
+                        toastr.error('Fel!');
+                    });              
             };
 
 

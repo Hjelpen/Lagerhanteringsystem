@@ -16,11 +16,9 @@
                     <th>Pris</th>
                     <th>Inmatning</th>
                     <th>Ta Bort komponent</th>
-
+                    <th>Ändra komponent</th>
                 </tr>
-
             </thead>
-
             <tbody>
                 <tr>
                     <td hidden="hidden">{{component.id}}</td>
@@ -29,37 +27,40 @@
                     <td>{{component.orderTime}}</td>
                     <td>{{component.amount}}</td>
                     <td>{{component.price}} </td>
-
-                    <td><input type="number" ng-model="Update.amount" /></td>
+                    <td><input type="number" min="1" ng-model="Update.amount" /></td>
                     <td><button id="taBortKomponent" class="glyphicon glyphicon-trash" type="submit" ng-click="deleteComponent(id)"></button></td>
+                    <td><button type="button" class="glyphicon glyphicon-edit" data-toggle="modal" data-target="#myModal"></button></td>
                 </tr>
             </tbody>
         </table>
-        <!--<button class="btn btn-lg btn-info btn-block" type="submit" ng-click="updateInvFunction()">Korrigera Lagersaldo</button>-->
+
         <button id="läggTill" class="btn btn-lg btn-info btn-block" type="submit" ng-click="addComponentAmount()">Lägg till</button>
 
         <a id="editCompBackButton" href="#/component" class="btn btn-lg btn-info btn-block">Tillbaka</a>
         <div id="korrigeraLagerSadldo">
+            <button id="KorrigeraLagersaldo" class="btn btn-lg btn-info btn-block" type="submit" ng-click="updateInvFunction()">Inventering</button>
+        </div>
 
-            <button id="KorrigeraLagersaldo" class="btn btn-lg btn-info btn-block" type="submit" ng-click="updateInvFunction()">Korrigera Lagersaldo</button>
-
+        <!-- Modal -->
+        <div id="myModal" class="modal fade" role="dialog">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">Ändra komponent</h4>
+                    </div>
+                    <div class="modal-body">
+                        Namn: <input type="text" class="form-control" ng-value="component.name" ng-model="updatecomponent.name" />
+                        Artikelnummer: <input type="text" class="form-control" ng-value="component.articleNumber" ng-model="updatecomponent.articleNumber" />
+                        Beställningstid: <input type="number" class="form-control" ng-value="component.orderTime" ng-model="updatecomponent.orderTime" />
+                        Pris: <input type="number" class="form-control" ng-value="component.price" ng-model="updatecomponent.price" />
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary" data-ng-click="updateComponent()" data-dismiss="modal">Spara</button>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
-
-
-
-
-
-    <div id="varningKorrigering" class="alert alert-dismissible alert-warning">
-        <button type="button" class="close" data-dismiss="alert">&times;</button>
-        <h4>OBSERVERA!</h4>
-        <p>
-            Varning, när du använder korrigera lagersaldo går det inte att backa din åtgärd.<br />
-            Använd endast korrigera lagersadlo när lagret inte stämmer
-        </p>
-    </div>
-
-
-
 </body>
 </html>

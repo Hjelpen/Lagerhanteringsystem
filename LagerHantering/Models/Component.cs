@@ -10,9 +10,9 @@ namespace LagerHantering.Models
 
         public string Name { get; set; }
         public string ArticleNumber { get; set; }
-        public string OrderTime { get; set; }
+        public int? OrderTime { get; set; }
         public int Amount { get; set; }
-        public decimal Price { get; set; }
+        public decimal? Price { get; set; }
 
         [NotMapped]
         public int ComponentAmount { get; set; }

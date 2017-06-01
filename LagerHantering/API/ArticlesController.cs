@@ -16,6 +16,7 @@ using LagerHantering.ViewModels;
 
 namespace LagerHantering.API
 {
+    [Authorize]
     public class ArticlesController : ApiController
     {
         DefaultDbContext db = new DefaultDbContext();

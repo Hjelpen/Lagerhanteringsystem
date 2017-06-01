@@ -26,7 +26,7 @@
                     toastr.success('Komponent sparad')
                 },
                    function (response) {
-                       (response)
+                       toastr.error('Fyll i alla fält!');
                    });
             };
 

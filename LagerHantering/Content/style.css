@@ -187,15 +187,18 @@ table {
 #editCompBackButton {
     width: 175px;
 }
+
 #varningKorrigering {
     position: fixed;
     bottom: 0;
     margin-left: auto;
-    margin-right: auto; 
+    margin-right: auto;
 }
+
 .close {
     visibility: hidden;
 }
+
 #editArticle {
     width: 100px;
 }

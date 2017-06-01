@@ -31,11 +31,12 @@
                     .then(function (response) {
                         toastr.success("Lagerstatus på " + $scope.component.name + " ändrad till " + $scope.Update.amount);
                         $scope.editComponent();
-                        $scope.Update.amount = "";                     
-                    }, function errorCallback(response) {                
-                        toastr.error('Ange ett antal att skicka in');                                             
+                        $scope.Update.amount = "";
+                    }, function errorCallback(response) {
+                        toastr.error('Ange ett antal att skicka in');
                     });
-                }};
+                }
+            };
 
             //plussar på ett värde på en komponents mängd
             $scope.addComponentAmount = function () {
@@ -47,8 +48,8 @@
                          $scope.editComponent();
                          $scope.Update.amount = "";
 
-                     }, function errorCallback(response) {                
-                             toastr.error('Ange ett antal att skicka in');                           
+                     }, function errorCallback(response) {
+                         toastr.error('Ange ett antal att skicka in');
                      });
                 }
             };

@@ -31,7 +31,7 @@
                     $scope.selectedOption = $scope.components[0];
                 },
                  function (response) {
-                     
+
                  });
             };
 
@@ -39,25 +39,25 @@
             $scope.saveComponent = function (item1) {
                 $scope.selectedOption.componentAmount = $scope.articleComponents.componentamount
                 $scope.selectedComponents.push($scope.selectedOption)
-                
+
                 var index = $scope.components.indexOf($scope.selectedOption);
                 $scope.components.splice(index, 1);
 
 
                 $scope.articleComponents.componentamount = 1;
-                   
+
                 console.log($scope.selectedComponents);
             };
 
 
             //tar bort en komponent från den tillfälliga arrayn 'scope.selectedComponents'
             $scope.deleteSelectedComponent = function (item) {
-          
+
                 console.log(item)
                 var index = $scope.selectedComponents.indexOf(item)
                 $scope.components.push(item);
                 $scope.selectedComponents.splice(index, 1);
-         
+
 
             };
 
@@ -67,7 +67,7 @@
                 if ($scope.article.Name.length == 0) {
                     toastr.error('Ange ett artikelnamn');
                     return;
-                    
+
                 }
 
                 if ($scope.selectedComponents.length == 0) {
@@ -82,18 +82,18 @@
                     $scope.article.Name = "",
                     $scope.getAllArticles();
                     $scope.getAllComponents()
-                    
+
                     if (response.statusText == "Created") {
                         toastr.success('Artikel skapad!')
                     }
                 })
             };
-                        
+
             $scope.getAllArticles = function () {
                 articleService.getArticles().then(function (response) {
                     $scope.articles = response.data
                 });
             };
-            
+
         }]);
 })();

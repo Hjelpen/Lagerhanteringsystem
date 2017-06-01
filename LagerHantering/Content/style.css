@@ -196,3 +196,6 @@ table {
 .close {
     visibility: hidden;
 }
+#editArticle {
+    width: 100px;
+}
